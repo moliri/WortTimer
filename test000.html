@@ -1,39 +1,15 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+    <script src="javascripts/123.js"></script>
+</head>
+
 <span id="countdown" class="timer"></span>
 <script>
-var seconds = 10;
-function secondPassed() {
-    var minutes = Math.round((seconds - 30)/60);
-    var remainingSeconds = seconds % 60;
-    if (remainingSeconds < 10) {
-        remainingSeconds = "0" + remainingSeconds;  
-    }
-    document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
-    if (seconds == 0) {
-        clearInterval(countdownTimer);
-        document.getElementById('countdown').innerHTML = "Time Out";
-    } else {
-        seconds--;
-    }
-    
-}
- 
 var countdownTimer = setInterval('secondPassed()', 1000);
 </script>
 <button onclick="myStopFunction()">Stop time</button>
-<script>
-function myStopFunction()
-	{
-	clearInterval(countdownTimer);
-	}
-</script>
 <button onclick="myContinueFunction()">Continue</button>
-<script>
-function myContinueFunction()
-	{
-		var countdownTimer = setInterval('secondPassed()', 1000);
-	}
-</script>
+
 </html>
