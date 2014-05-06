@@ -15,8 +15,6 @@ function secondPassed() {
     }
     
 }
-
-
 function myStopFunction()
     {
     clearInterval(countdownTimer);
@@ -26,3 +24,18 @@ function myContinueFunction()
     {
         var countdownTimer = setInterval('secondPassed()', 1000);
     }
+
+$(document).ready(function(){
+            $("#CountDownTimer").TimeCircles({ time: { Days: { show: false }, Hours: { show: false } }});
+            $("#CountDownTimer").TimeCircles().stop();
+            
+            // Start and stop are methods applied on the public TimeCircles instance
+            $(".startTimer").click(function() {
+                $("#CountDownTimer").TimeCircles().start();
+            });
+            $(".stopTimer").click(function() {
+                $("#CountDownTimer").TimeCircles().stop();
+            });
+          
+        });
+

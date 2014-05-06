@@ -4,36 +4,17 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
         <script type="text/javascript" src="javascripts/TimeCircles.js"></script>
+        <script type="text/javascript" src="javascripts/123.js"></script>
         <link rel="stylesheet" href="javascripts/TimeCircles.css" />
     </head>
     <body>
         <div class="container">
-            
-            <h1>Counting down 15 minutes (900 seconds)</h1>
-            <div id="CountDownTimer" data-timer="900" style="width: 1000px; height: 250px;"></div>
+            <button class="btn btn-success stopTimer" id="setbtn">Set Timer</button>
+            <!--><h2>Counting down 15 minutes (900 seconds)</h2><!-->
+            <div id="CountDownTimer" data-timer="100" style="width: 1000px; height: 250px;"></div>
             <button class="btn btn-success startTimer">Start Timer</button>
             <button class="btn btn-danger stopTimer">Stop Timer</button>
             
-        <script>
-            $("#CountDownTimer").TimeCircles({ time: { Days: { show: false }, Hours: { show: false } }});
-            $("#CountDownTimer").TimeCircles().stop();
-            var updateTime = function(){
-                var date = $("#date").val();
-                var time = $("#time").val();
-                var datetime = date + ' ' + time + ':00';
-                //$("#DateCountdown").data('date', datetime).TimeCircles().start();
-            }
-            $("#date").change(updateTime).keyup(updateTime);
-            $("#time").change(updateTime).keyup(updateTime);
-            
-            // Start and stop are methods applied on the public TimeCircles instance
-            $(".startTimer").click(function() {
-                $("#CountDownTimer").TimeCircles().start();
-            });
-            $(".stopTimer").click(function() {
-                $("#CountDownTimer").TimeCircles().stop();
-            });
-
-        </script>       
+          
     </body>
 </html>
