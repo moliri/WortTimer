@@ -1,79 +1,149 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Worttimer : A timer app for homebrewers" />
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<link rel="shortcut icon" href="img/favicon.ico" >
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <title>Wort Timer</title>
 
-    <title>Worttimer</title>
-  </head>
+    <!-- Bootstrap Core CSS -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
-  <body>
+    <!-- Fonts -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/moliri/WortTimer">View on GitHub</a>
+    <!-- jQuery/jQuery Mobile/jQuery Mobile CSS -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
 
-          <h1 id="project_title">Worttimer</h1>
-          <h2 id="project_tagline">A timer app for homebrewers</h2>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script> 
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/moliri/WortTimer/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/moliri/WortTimer/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
+    <!-- Parse files -->
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+    <script type="text/JavaScript" src="js/parse.js"></script>
+
+    <link href="css/WortTimer.css" rel="stylesheet">
+    <script src="js/WortTimer.js"></script>
+</head>
+
+<body>
+
+	<!-- Intro Page -->
+    <div data-role="page" id="intropage" class="intro"> 
+        <div data-role="content" class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Wort Timer</h1>
+                        <p class="intro-text"></p>
+                        <div class="page-scroll">
+                            <a href="#timer" id="startbtn" class="btn btn-circle">
+                                <i class="fa fa-angle-double-down animated"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+	<!-- Timer Page -->
+	<div data-role="page" id="timer"> 
+	
+        <div data-role="panel" id="introPanel1" data-theme="b">
+            <ul data-role="listview" class="panelList">
+                 <li style="white-space: normal !important"><a href="#timer"> Timer </a></li>
+                 <li style="white-space: normal !important"><a href="#about"> About Us </a></li>
+                 <li style="white-space: normal !important"><a href="#contact"> Follow Us </a></li>
+            </ul>
+        </div>
+		
+		<div data-role="header" id="head" data-theme="b">
+            <a href="#introPanel1" data-iconpos="notext" data-icon="bars" ></a>
+            <h1> Timer </h1>
+        </div>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
+        <div data-role="content">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2 id="h2"> Timer</h2>
+            </div>
+        </div>
+		
     </div>
+	
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Worttimer maintained by <a href="https://github.com/moliri">moliri</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
+
+	<!-- About Page -->
+	<div data-role="page" id="about"> 
+		
+		<div data-role="panel" id="introPanel2" data-theme="b">
+            <ul data-role="listview" class="panelList">
+                 <li style="white-space: normal !important"><a href="#timer"> Timer </a></li>
+                 <li style="white-space: normal !important"><a href="#about"> About Us </a></li>
+                 <li style="white-space: normal !important"><a href="#contact"> Follow Us </a></li>
+            </ul>
+        </div>
+		
+	
+        <div data-role="header" id="head" data-theme="b">
+			<a href="#introPanel2" data-iconpos="notext" data-icon="bars"></a>
+            <h1>About Wort Timer</h1> 
+        </div> 
+		
+        <div data-role="content" class="content">
+        
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>About Wort Timer</h2>
+				
+				<p>Wort Timer is a mobile web app for home brewers that allows one to time out the different steps of the brewing process.</p>
+				<p>Creators: Mark Padecky and Milim Lee</p>
+                <p>Developers: Dylan Hirshkowitz, Leesha Maliakal, Zachariah Straight, Haodong Wang, Peiying Zhou, and Daniel Zuo</p>
+                
+            </div>
+        </div>
     </div>
-
+	
+	<!-- Contact Page -->
+	<div data-role="page" id="contact"> 
+	
+		<div data-role="panel" id="introPanel3" data-theme="b">
+            <ul data-role="listview" class="panelList">
+                 <li style="white-space: normal !important"><a href="#timer"> Timer </a></li>
+                 <li style="white-space: normal !important"><a href="#about"> About Us </a></li>
+                 <li style="white-space: normal !important"><a href="#contact"> Follow Us </a></li>
+            </ul>
+        </div>
+		
+	
+        <div data-role="header" id="head" data-theme="b">
+			<a href="#introPanel3" data-iconpos="notext" data-icon="bars">Menu</a>
+            <h1>Follow Wort Timer</h1> 
+        </div> 
+	
+        <div data-role="content" class="contact">
+			<div class="col-lg-8 col-lg-offset-2">
+					<h2>Follow Wort Timer</h2>
+					
+					<ul class="list-inline banner-social-buttons">                  
+                    <li><a id="contactBtn" href="https://github.com/moliri/WortTimer" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+					</ul>					
+			</div>
+        </div>
+    </div>
     
-
-  </body>
+    <!-- Testing page -->
+    <div data-role="page" id="testing">
+        <div data-role="content" class="testing-content">
+            This page is for testing.
+        </div>
+    </div>
+	
+</body>
 </html>
