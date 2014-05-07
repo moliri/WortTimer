@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Wort Timer</title>
+
+    <!-- jQuery/jQuery Mobile/jQuery Mobile CSS -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <script type="text/JavaScript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+    <script type="text/JavaScript" src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script> 
+
+    <!-- Parse files -->
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+    <script type="text/JavaScript" src="js/parse.js"></script>
+
+    <!-- Wort Timer JS files -->
+    <script src="js/WortTimer.js"></script>
+    <script type="text/javascript" src="js/TimeCircles.js"></script>
+    <link rel="stylesheet" href="css/TimeCircles.css" />
+</head>
+
+<body>
+    <!-- Input Page -->
+    <div data-role="page" id="timeInput">
+        <div data-role="header">
+            <h1> WORT TIMER </h1> 
+        </div>
+        <div data-role="content">
+            <div data-role="fieldcontain">
+                <label for="firstPhase">First Phase: </label>      
+                <input id="firstPhase" name="firstPhase" type="text"/>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="secondPhase">Second Phase: </label>      
+                <input id="secondPhase" name="secondPhase" type="text"/>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="numIntervals">Number of Intervals</label>      
+                <input id="numIntervals" name="numIntervals" type="text"/>
+            </div> 
+            <div data-role="fieldcontain">     
+                <input type="button" id="submitTime" value="Submit" />
+            </div> 
+        </div>
+        <div data-role="footer">
+            <h1></h1> 
+        </div>
+    </div>
+
+    <div data-role="page" id="timer">
+        <div data-role="content">
+            <div id="CountDownTimer" data-timer="900" style="width: 1000px; height: 250px;"></div>
+            <button class="btn btn-success startTimer">Start Timer</button>
+            <button class="btn btn-danger stopTimer">Stop Timer</button>
+        </div>
+    </div>
+</body>
+
+</html>
