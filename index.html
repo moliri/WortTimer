@@ -8,7 +8,8 @@
     <meta name="author" content="">
 	<link rel="shortcut icon" href="img/favicon.ico" >
 
-     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <script type="text/javascript" src="js/TimeCircles.js"></script>
     <!-- <script type="text/javascript" src="js/123.js"></script> -->
     <!-- <link rel="stylesheet" href="css/TimeCircles.css" /> -->
@@ -28,10 +29,6 @@
 
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script> 
-
-    <!-- Parse files -->
-    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
-    <script type="text/JavaScript" src="js/parse.js"></script>
 
     <link href="css/WortTimer.css" rel="stylesheet">
     <script src="js/WortTimer.js"></script>
@@ -63,12 +60,28 @@
 	<!-- Timer Page -->
 	<div data-role="page" id="timer"> 
 		
-		 <div class="container">
-            <button class="btn btn-success stopTimer" id="setbtn">Set Timer</button>
-            <!--><h2>Counting down 15 minutes (900 seconds)</h2><!-->
-            <div id="CountDownTimer" data-timer="100" style="width: 1000px; height: 250px;"></div>
-            <button class="btn btn-success startTimer">Start Timer</button>
-            <button class="btn btn-danger stopTimer">Stop Timer</button>
+		<div data-role="panel" id="introPanel1" data-theme="b">
+            <ul data-role="listview" class="panelList">
+                 <li style="white-space: normal !important"><a href="#timer"> Timer </a></li>
+                 <li style="white-space: normal !important"><a href="#about"> About Us </a></li>
+                 <li style="white-space: normal !important"><a href="#contact"> Follow Us </a></li>
+            </ul>
+        </div>
+		
+		<div data-role="header" id="head" data-theme="b">
+			<a href="#introPanel1" data-iconpos="notext" data-icon="bars"></a>
+            <h1>Timer</h1> 
+        </div>
+		
+		<div data-role="content">
+			<div class="container">
+				<button class="btn btn-success stopTimer" id="setbtn">Set Timer</button>
+				<!--><h2>Counting down 15 minutes (900 seconds)</h2><!-->
+				<div id="CountDownTimer" data-timer="100" style="width: 1000px; height: 250px;"></div>
+				<button class="btn btn-success startTimer">Start Timer</button>
+				<button class="btn btn-danger stopTimer">Stop Timer</button>
+			</div>
+		</div>
 		
     </div>
 	
