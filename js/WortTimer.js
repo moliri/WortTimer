@@ -29,4 +29,12 @@ $(document).on('pageinit','#timer',function() {
             $(".stopTimer").click(function() {
                 $("#CountDownTimer").TimeCircles().stop();
             });       
+
+            $("#CountDownTimer").TimeCircles().addListener(timeElapsed, "visible");
 });
+
+function timeElapsed(unit, value, total) {
+    if (total === 0) {
+        alert("Time is up!");
+    }
+}
