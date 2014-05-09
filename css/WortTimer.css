@@ -261,6 +261,10 @@ a:focus {
     -moz-animation-timing-function: linear;
 }
 
+#firstphase{
+    color: #DAA520;
+}
+
 @-webkit-keyframes pulse {    
     0 {
         -webkit-transform: scale(1);
