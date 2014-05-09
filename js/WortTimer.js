@@ -7,7 +7,7 @@ var firstPhase;
 $(document).on('pageinit', '#timeInput', function(){
 	$('#submitTime').click(function () {
 		//alert($('#firstPhase').val());
-		$('#CountDownTimer').attr('data-timer', $('#firstPhase').val());
+		$('#CountDownTimer').attr('data-timer', $('#firstPhase').val())+1;
 		$.mobile.changePage('#timer');
 	});
 });
