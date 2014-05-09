@@ -33,7 +33,7 @@ $(document).on('pageinit','#timer',function() {
 });
 
 function timeElapsed(unit, value, total) {
-    if (total === -1) {
+    if (total === 0) {
         alert("Time is up!");
     }
 }
