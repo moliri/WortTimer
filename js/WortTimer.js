@@ -7,12 +7,8 @@ var firstPhase;
 $(document).on('pageinit', '#timeInput', function(){
 	$('#submitTime').click(function () {
 		//alert($('#firstPhase').val());
-<<<<<<< HEAD
 		$('#CountDownTimer').attr('data-timer', $('#firstPhase').val());
         $('#CountDownTimer2').attr('data-timer', $('#firstPhase').val());
-=======
-		$('#CountDownTimer').attr('data-timer', $('#firstPhase').val())+1;
->>>>>>> 62b7226a7140d432afcce65d4ab01c3f258b3c47
 		$.mobile.changePage('#timer');
 	});
 });
@@ -24,14 +20,12 @@ $(document).on('pageinit','#timer',function() {
             	"time" : { "Days": { "show": false }, "Hours": { "show": false },"Seconds":{"show":false}},
             	"count_past_zero": false
             });
-<<<<<<< HEAD
+
             $("#CountDownTimer2").TimeCircles({
                 "time" : { "Days": { "show": false }, "Hours": { "show": false },"Minutes":{"show":false}},
                 "count_past_zero": false
             });
             //$("#CountDownTimer").TimeCircles().stop();
-=======
->>>>>>> 62b7226a7140d432afcce65d4ab01c3f258b3c47
             
             // Start and stop are methods applied on the public TimeCircles instance
             $(".startTimer").click(function() {
