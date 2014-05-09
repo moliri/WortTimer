@@ -22,6 +22,18 @@
     <script src="js/WortTimer.js"></script>
     <script type="text/javascript" src="js/TimeCircles.js"></script>
     <link rel="stylesheet" href="css/TimeCircles.css" />
+    <style type="text/css">
+     #CountDownTimer2 {
+        position:absolute;
+        top: 60%;
+        left: 30%;
+        width:0em;
+        height:18em;
+        margin-top: -9em; /*set to a negative number 1/2 of your height*/
+        margin-left: 8em; /*set to a negative number 1/2 of your width*/
+        border: 0px solid #ccc;
+        }
+    </style>
 </head>
 
 <body>
@@ -54,7 +66,12 @@
 
     <div data-role="page" id="timer">
         <div data-role="content">
-            <div id="CountDownTimer" data-timer="900" style="width: 1000px; height: 250px;"></div>
+            <div>
+                <span id="CountDownTimer" data-timer="900" style="width: 300px; height: 270px;" ></span>
+                <span id="CountDownTimer2" data-timer="900" style="width: 300px;  height: 100px;" ></span>
+            </div> 
+            
+            
             <button class="btn btn-success startTimer">Start Timer</button>
             <button class="btn btn-danger stopTimer">Stop Timer</button>
         </div>
