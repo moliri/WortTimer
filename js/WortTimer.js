@@ -17,7 +17,7 @@ $(document).on('pageinit', '#timeInput', function(){
 $(document).on('pageinit','#timer',function() {
             $("#CountDownTimer").TimeCircles({
             	"time" : { "Days": { "show": false }, "Hours": { "show": false }},
-            	"count_past_zero": true
+            	"count_past_zero": false
             });
             
             // Start and stop are methods applied on the public TimeCircles instance
