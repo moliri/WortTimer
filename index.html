@@ -34,8 +34,9 @@
     <style type="text/css">
      #CountDownTimer2 {
         position:absolute;
-        top: 60%;
-        left: 30%;
+        bottom: 30%;
+		left: 20%;
+        
         width:0em;
         height:18em;
         margin-top: -9em; /*set to a negative number 1/2 of your height*/
@@ -54,7 +55,7 @@
         </div>
 		
         <div data-role="content" class="content">
-            <h3> Welcome to the Wort Timer App! Enter your recipe times below!</h3>
+            <h1 id="welcome"> Wort Timer</h1>
             <div data-role="fieldcontain">
                 <label for="firstPhase">Steep Time (sec): </label>      
                 <input id="firstPhase" name="firstPhase" type="text"/>
@@ -72,10 +73,6 @@
             </div> 
         </div>
 		
-        <div data-role="footer" data-theme="b">
-            <h1></h1> 
-        </div>
-		
     </div>
 
 	<!-- Timer Page -->
@@ -86,7 +83,7 @@
         </div>
 	
         <div data-role="content">
-            <div>
+            <div id="timersGrouped">
                 <span id="CountDownTimer" data-timer="900" style="width: 300px; height: 270px;" ></span>
                 <span id="CountDownTimer2" data-timer="900" style="width: 300px;  height: 100px;" ></span>
             </div> 
@@ -95,12 +92,11 @@
 			</br>
 			</br>
 			</br>
+			</br>
+			</br>
+			</br>
             <button class="btn btn-success startTimer">Start Timer</button>
             <button class="btn btn-danger stopTimer">Stop Timer</button>
-        </div>
-		
-		<div data-role="footer" data-theme="b">
-            <h1></h1> 
         </div>
 		
     </div>
