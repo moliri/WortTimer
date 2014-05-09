@@ -2,8 +2,8 @@
 
 var firstPhase;
 
-/* start page events and functions */
-/* starting script for intro page */
+/* Input page events and functions */
+/* starting script for input page */
 $(document).on('pageinit', '#timeInput', function(){
 	$('#submitTime').click(function () {
 		//alert($('#firstPhase').val());
@@ -19,7 +19,6 @@ $(document).on('pageinit','#timer',function() {
             	"time" : { "Days": { "show": false }, "Hours": { "show": false }},
             	"count_past_zero": false
             });
-            //$("#CountDownTimer").TimeCircles().stop();
             
             // Start and stop are methods applied on the public TimeCircles instance
             $(".startTimer").click(function() {

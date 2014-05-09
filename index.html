@@ -14,7 +14,15 @@
     <script type="text/JavaScript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
     <script type="text/JavaScript" src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script> 
 
-    <!-- Parse files -->
+    <!-- Bootstrap Core CSS -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- Fonts -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	
+	<!-- Parse files -->
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
     <script type="text/JavaScript" src="js/parse.js"></script>
 
@@ -28,16 +36,18 @@
 <body>
     <!-- Input Page -->
     <div data-role="page" id="timeInput">
-        <div data-role="header">
+        
+		<div data-role="header" data-theme="b">
             <h1> Wort Timer </h1> 
         </div>
+		
         <div data-role="content">
             <div data-role="fieldcontain">
-                <label for="firstPhase">First Phase: </label>      
+                <label for="firstPhase">First Phase (sec): </label>      
                 <input id="firstPhase" name="firstPhase" type="text"/>
             </div>
             <div data-role="fieldcontain">
-                <label for="secondPhase">Second Phase: </label>      
+                <label for="secondPhase">Second Phase (sec): </label>      
                 <input id="secondPhase" name="secondPhase" type="text"/>
             </div>
             <div data-role="fieldcontain">
@@ -48,17 +58,29 @@
                 <input type="button" id="submitTime" value="Submit" />
             </div> 
         </div>
-        <div data-role="footer">
+		
+        <div data-role="footer" data-theme="b">
             <h1></h1> 
         </div>
+		
     </div>
 	<!-- Timer Page -->
     <div data-role="page" id="timer">
+	
+		<div data-role="header" data-theme="b">
+            <h1> Wort Timer </h1> 
+        </div>
+	
         <div data-role="content">
             <div id="CountDownTimer" data-timer="900" style="width: 1000px; height: 250px;"></div>
             <button class="btn btn-success startTimer">Start Timer</button>
             <button class="btn btn-danger stopTimer">Stop Timer</button>
         </div>
+		
+		<div data-role="footer" data-theme="b">
+            <h1></h1> 
+        </div>
+		
     </div>
 </body>
 
