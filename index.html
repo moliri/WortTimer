@@ -6,163 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-	<link rel="shortcut icon" href="img/favicon.ico" >
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <script type="text/javascript" src="js/TimeCircles.js"></script>
-    <!-- <script type="text/javascript" src="js/123.js"></script> -->
-    <!-- <link rel="stylesheet" href="css/TimeCircles.css" /> -->
 
     <title>Wort Timer</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Fonts -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-
     <!-- jQuery/jQuery Mobile/jQuery Mobile CSS -->
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <script type="text/JavaScript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+    <script type="text/JavaScript" src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script> 
 
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
-    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script> 
+    <!-- Parse files -->
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+    <script type="text/JavaScript" src="js/parse.js"></script>
 
-    <link href="css/WortTimer.css" rel="stylesheet">
-    <script src="js/WortTimer.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-   
+    <!-- Wort Timer files -->
+    <script src="js/WortTimer.js" type="text/javascript"></script>
+	<link href="css/WortTimer.css" rel="stylesheet">
+    <script src="js/TimeCircles.js" type="text/javascript"></script>
+    <link href="css/TimeCircles.css" rel="stylesheet" />
 </head>
 
 <body>
-
-	<!-- Intro Page -->
-    <div data-role="page" id="intropage" class="intro"> 
-        <div data-role="content" class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">Wort Timer</h1>
-                        <p class="intro-text"></p>
-                        <div class="page-scroll">
-                            <a href="#about" id="startbtn" class="btn btn-circle">
-                                <i class="fa fa-angle-double-down animated"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-	<!-- Timer Page -->
-	<div data-role="page" id="timer"> 
-		
-		<div data-role="panel" id="introPanel1" data-theme="b">
-            <ul data-role="listview" class="panelList">
-                 <li style="white-space: normal !important"><a href="#timer"> Timer </a></li>
-                 <li style="white-space: normal !important"><a href="#about"> About Us </a></li>
-                 <li style="white-space: normal !important"><a href="#contact"> Follow Us </a></li>
-            </ul>
-        </div>
-		
-		<div data-role="header" id="head" data-theme="b">
-			<a href="#introPanel1" data-iconpos="notext" data-icon="bars"></a>
-            <h1>Timer</h1> 
-        </div>
-		
-		<div data-role="content">
-			<div class="container">
-				<button class="btn btn-success stopTimer" id="setbtn">Set Timer</button>
-				<!--><h2>Counting down 15 minutes (900 seconds)</h2><!-->
-				<div id="CountDownTimer" data-timer="100" style="width: 1000px; height: 250px;"></div>
-				<button class="btn btn-success startTimer">Start Timer</button>
-				<button class="btn btn-danger stopTimer">Stop Timer</button>
-			</div>
-		</div>
-		
-    </div>
-	
-
-
-	<!-- About Page -->
-	<div data-role="page" id="about"> 
-		
-		<div data-role="panel" id="introPanel2" data-theme="b">
-            <ul data-role="listview" class="panelList">
-                 <li style="white-space: normal !important"><a href="#timer"> Timer </a></li>
-                 <li style="white-space: normal !important"><a href="#about"> About Us </a></li>
-                 <li style="white-space: normal !important"><a href="#contact"> Follow Us </a></li>
-            </ul>
-        </div>
-		
-	
-        <div data-role="header" id="head" data-theme="b">
-			<a href="#introPanel2" data-iconpos="notext" data-icon="bars"></a>
-            <h1>About Wort Timer</h1> 
-        </div> 
-		
-        <div data-role="content" class="content">
-        
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>About Wort Timer</h2>
-				
-				<p>Wort Timer is a mobile web app for home brewers that allows one to time out the different steps of the brewing process.</p>
-				<p>Creators: Mark Padecky and Milim Lee</p>
-                <p>Developers: Dylan Hirshkowitz, Leesha Maliakal, Zachariah Straight, Haodong Wang, Peiying Zhou, and Daniel Zuo</p>
-                
-            </div>
-        </div>
-    </div>
-	
-	<!-- Contact Page -->
-	<div data-role="page" id="contact"> 
-	
-		<div data-role="panel" id="introPanel3" data-theme="b">
-            <ul data-role="listview" class="panelList">
-                 <li style="white-space: normal !important"><a href="#timer"> Timer </a></li>
-                 <li style="white-space: normal !important"><a href="#about"> About Us </a></li>
-                 <li style="white-space: normal !important"><a href="#contact"> Follow Us </a></li>
-            </ul>
-        </div>
-		
-	
-        <div data-role="header" id="head" data-theme="b">
-			<a href="#introPanel3" data-iconpos="notext" data-icon="bars">Menu</a>
-            <h1>Follow Wort Timer</h1> 
-        </div> 
-	
-        <div data-role="content" class="contact">
-			<div class="col-lg-8 col-lg-offset-2">
-					<h2>Follow Wort Timer</h2>
-					
-					<ul class="list-inline banner-social-buttons">                  
-                    <li><a id="contactBtn" href="https://github.com/moliri/WortTimer" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-					</ul>					
-			</div>
-        </div>
-    </div>
-
     <!-- Input Page -->
     <div data-role="page" id="timeInput">
-        <div data-role="header" data-theme="b">
+        <div data-role="header">
             <h1> Wort Timer </h1> 
         </div>
         <div data-role="content">
-            Hello
+            <div data-role="fieldcontain">
+                <label for="firstPhase">First Phase: </label>      
+                <input id="firstPhase" name="firstPhase" type="text"/>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="secondPhase">Second Phase: </label>      
+                <input id="secondPhase" name="secondPhase" type="text"/>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="numIntervals">Number of Intervals</label>      
+                <input id="numIntervals" name="numIntervals" type="text"/>
+            </div> 
+            <div data-role="fieldcontain">     
+                <input type="button" id="submitTime" value="Submit" />
+            </div> 
         </div>
-
-    </div>
-    
-    <!-- Testing Page -->
-    <div data-role="page" id="testing">
-        <div data-role="content" class="testing-content">
-            This page is for testing.
+        <div data-role="footer">
+            <h1></h1> 
         </div>
     </div>
-	
+	<!-- Timer Page -->
+    <div data-role="page" id="timer">
+        <div data-role="content">
+            <div id="CountDownTimer" data-timer="900" style="width: 1000px; height: 250px;"></div>
+            <button class="btn btn-success startTimer">Start Timer</button>
+            <button class="btn btn-danger stopTimer">Stop Timer</button>
+        </div>
+    </div>
 </body>
+
 </html>
