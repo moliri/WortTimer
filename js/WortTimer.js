@@ -7,7 +7,7 @@ var firstPhase;
 $(document).on('pageinit', '#timeInput', function(){
 	$('#submitTime').click(function () {
 		//alert($('#firstPhase').val());
-		$('#CountDownTimer').attr('data-timer', $('#firstPhase').val()+1);
+		$('#CountDownTimer').attr('data-timer', $('#firstPhase').val());
 		$.mobile.changePage('#timer');
 	});
 });
@@ -17,7 +17,7 @@ $(document).on('pageinit', '#timeInput', function(){
 $(document).on('pageinit','#timer',function() {
             $("#CountDownTimer").TimeCircles({
             	"time" : { "Days": { "show": false }, "Hours": { "show": false }},
-            	"count_past_zero": false
+            	"count_past_zero": true
             });
             
             // Start and stop are methods applied on the public TimeCircles instance
@@ -33,7 +33,7 @@ $(document).on('pageinit','#timer',function() {
 });
 
 function timeElapsed(unit, value, total) {
-    if (total === 0) {
+    if (total === -1) {
         alert("Time is up!");
     }
 }
