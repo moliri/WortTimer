@@ -261,6 +261,10 @@ a:focus {
     -moz-animation-timing-function: linear;
 }
 
+#timeInput{
+	color: #DAA520;
+}
+
 #firstphase{
     color: #DAA520;
 }
