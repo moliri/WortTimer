@@ -345,9 +345,9 @@ a:focus {
 	padding-top: 50px;
 	text-align: center;
     position: absolute;
-	color: #fff;
-	background: url(href="http://imgur.com/KTAK6rw") no-repeat center scroll;
-	background-color: #47D1D1;
+	color: #DAA520;
+	background: url(../img/intro-bg.jpg) no-repeat center scroll;
+	
 }
 
 .contact {
