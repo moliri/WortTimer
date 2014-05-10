@@ -39,6 +39,7 @@ $(document).on('pageinit','#timer', function() {
 	});       
 
 	$("#CountDownTimer").TimeCircles().addListener(timeElapsed, "visible");
+	$("#CountDownTimer2").TimeCircles().addListener(timeElapsed, "visible");
 });
 
 function timeElapsed(unit, value, total) {
