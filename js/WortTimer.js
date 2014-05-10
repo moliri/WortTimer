@@ -2,8 +2,6 @@
 
 var firstPhase;
 
-document.domain = "github.io";
-
 /* Input page events and functions */
 /* starting script for input page */
 $(document).on('pageinit', '#timeInput', function(){
