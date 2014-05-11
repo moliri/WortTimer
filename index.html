@@ -65,8 +65,19 @@
                 <input id="secondPhase" name="secondPhase" type="text"/>
             </div>
             <div data-role="fieldcontain">
+		<label for="select-choice-1" class="select">Add Hops How Many Times?</label>
+   		<select name="select-choice-1" id="select-choice-1">
+      		<option value="one">1</option>
+      		<option value="two">2</option>
+      		<option value="three">3</option>
+      		<option value="four">4</option>
+      		<option value="five">5</option>
+   		</select>
+	    </div>
+            <div data-role="fieldcontain">
                 <label for="numIntervals">Number of Hops</label>      
                 <input id="numIntervals" name="numIntervals" type="text"/>
+                <input type="range" name="maxTimeInMinutes" id="maxTimeInMinutes" value="60" min="0" max="150" data-highlight="true" />
             </div> 
             <div data-role="fieldcontain">     
                 <input type="button" id="submitTime" value="Submit" />
@@ -89,8 +100,8 @@
             </div> 
             
             </br>
-			</br>
-			</br>
+			
+			
 			</br>
 			</br>
 			</br>
