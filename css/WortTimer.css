@@ -3,8 +3,6 @@ body {
     height: 100%;
     font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #FF74;
-    
-    background: url(../img/intro-bg.jpg) no-repeat center scroll;
 }
 
 html {
@@ -183,6 +181,11 @@ a:focus {
 #timersGrouped {
 
 	
+}
+
+#timeInput {
+	background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
+	background-color: #000;
 }
 
 #userID {
