@@ -5,6 +5,50 @@ var firstPhase;
 /* Input page events and functions */
 /* starting script for input page */
 $(document).on('pageinit', '#timeInput', function(){
+	
+	$('#hop1').slider('disable');
+	$('#hop2').slider('disable');
+	$('#hop3').slider('disable');
+	$('#hop4').slider('disable');
+	$('#hop5').slider('disable');
+	
+	$('#hopTimes').click(function () {
+		
+		var val = $(document).getElementById("numHops");
+		var numHops = val.options[val.selectedIndex].value;
+		
+		switch(numHops) {
+		
+			case 1:
+				$('#hop1').slider('enable');
+				break;
+			case 2:
+				$('#hop1').slider('enable');
+				$('#hop2').slider('enable');
+				break;
+			case 3:
+				$('#hop1').slider('enable');
+				$('#hop2').slider('enable');
+				$('#hop3').slider('enable');
+				break;
+			case 4:
+				$('#hop1').slider('enable');
+				$('#hop2').slider('enable');
+				$('#hop3').slider('enable');
+				$('#hop4').slider('enable');
+				break;
+			case 5:
+				$('#hop1').slider('enable');
+				$('#hop2').slider('enable');
+				$('#hop3').slider('enable');
+				$('#hop4').slider('enable');
+				$('#hop5').slider('enable');
+				break;
+			default:
+				alert("Please enter hop times!");
+		
+	});
+	
 	$('#submitTime').click(function () {
 		//alert($('#firstPhase').val());
 		$('#CountDownTimer').attr('data-timer', $('#firstPhase').val());

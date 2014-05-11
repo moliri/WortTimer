@@ -65,17 +65,17 @@
                 <input id="secondPhase" name="secondPhase" type="text"/>
             </div>
             <div data-role="fieldcontain">
-		<label for="select-choice-1" class="select">Add Hops How Many Times?</label>
-   		<select name="select-choice-1" id="select-choice-1">
-      		<option value="one">1</option>
-      		<option value="two">2</option>
-      		<option value="three">3</option>
-      		<option value="four">4</option>
-      		<option value="five">5</option>
+		<label for="select-choice-1" class="select">Number of Hops:</label>
+   		<select name="select-choice-1" id="numHops">
+      		<option value=1>1</option>
+      		<option value=2>2</option>
+      		<option value=3>3</option>
+      		<option value=4>4</option>
+      		<option value=5>5</option>
    		</select>
 	    </div>
 	    <div>
-	    	<button type="button">Pick Hops Times</button>
+	    	<button id="hopTimes" type="button">Set Hop Times</button>
 	    </div>
 	    <div>
 	    	<input type="range" name="hops1" id="hops1" value="0" min="0" max="150" data-highlight="false" />
