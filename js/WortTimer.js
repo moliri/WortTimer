@@ -23,7 +23,7 @@ $(document).on('pageinit', '#timeInput', function(){
 		var numHops = val.options[val.selectedIndex].value;
 		console.log(numHops);
 		
-		switch(numHops) {
+		switch(parseInt(numHops)) {
 		
 			case 1:
 				$('#hop1').slider('enable');
