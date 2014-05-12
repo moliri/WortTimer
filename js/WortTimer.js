@@ -8,7 +8,15 @@ $(document).on('pageinit', '#home', function(){
 	$('#extract').click(function(){
 		$.mobile.changePage('#timeInput');
 	});
+	
+	$('#partialMash').click(function(){
+		$.mobile.changePage('#timeInput2');
 	});
+	$('#allGrain').click(function(){
+		$.mobile.changePage('#timeInput3');
+	});
+	
+});
 
 /* Input page events and functions */
 /* starting script for input page */
