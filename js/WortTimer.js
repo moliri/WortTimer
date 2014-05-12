@@ -2,6 +2,12 @@
 
 var firstPhase;
 
+$(document).on('pageinit', '#home', function(){
+	$('#extract').click(function(){
+		$.mobile.changePage('#timeInput');
+	});
+	});
+
 /* Input page events and functions */
 /* starting script for input page */
 $(document).on('pageinit', '#timeInput', function(){
