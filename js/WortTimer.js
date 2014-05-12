@@ -119,12 +119,10 @@ $(document).on('pageinit', '#timeInput', function(){
 	});
 	
 	$('#submitTime').click(function () {        
-        var firstPhase;
-        var secondPhase;
-        var numHops;
-        firstPhase = parseInt($('#firstPhase').val());
-        secondPhase = parseInt($('#secondPhase').val());
-        numHops = parseInt($('#numIntervals').val());
+        var val = document.getElementById("numHops");
+        var firstPhase = parseInt($('#firstPhase').val());
+        var secondPhase = parseInt($('#secondPhase').val());
+        var numHops = parseInt(val.options[val.selectedIndex].value);
         
         
         timerPhases.push(firstPhase);
