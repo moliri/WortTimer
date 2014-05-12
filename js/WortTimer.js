@@ -19,7 +19,7 @@ $(document).on('pageinit', '#timeInput', function(){
 	
 	$('#hopTimes').click(function () {
 		
-		var val = $(document).getElementById("numHops");
+		var val = document.getElementById("numHops");
 		var numHops = val.options[val.selectedIndex].value;
 		
 		switch(numHops) {
