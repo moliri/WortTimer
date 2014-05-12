@@ -55,17 +55,50 @@ $(document).on('pageinit', '#timeInput', function(){
 				$('#hop2').slider('enable');
 				break;
 			case 3:
+				$('#hop1').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop2').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop3').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop4').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop5').slider('disable');
+				$('#hop1').slider('refresh');
+				
 				$('#hop1').slider('enable');
 				$('#hop2').slider('enable');
 				$('#hop3').slider('enable');
 				break;
 			case 4:
+				$('#hop1').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop2').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop3').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop4').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop5').slider('disable');
+				$('#hop1').slider('refresh');
+				
 				$('#hop1').slider('enable');
 				$('#hop2').slider('enable');
 				$('#hop3').slider('enable');
 				$('#hop4').slider('enable');
 				break;
 			case 5:
+				$('#hop1').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop2').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop3').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop4').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop5').slider('disable');
+				$('#hop1').slider('refresh');
+				
 				$('#hop1').slider('enable');
 				$('#hop2').slider('enable');
 				$('#hop3').slider('enable');
