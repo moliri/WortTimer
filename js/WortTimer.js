@@ -13,7 +13,6 @@ $(document).on('pageinit', '#home', function(){
 /* Input page events and functions */
 /* starting script for input page */
 $(document).on('pageinit', '#timeInput', function(){
-<<<<<<< Updated upstream
 	
 	$('#hop1').slider('disable');
 	$('#hop1').slider('refresh');
@@ -119,11 +118,6 @@ $(document).on('pageinit', '#timeInput', function(){
 		}
 	});
 	
-	$('#submitTime').click(function () {
-		//alert($('#firstPhase').val());
-		$('#CountDownTimer').attr('data-timer', $('#firstPhase').val());
-        $('#CountDownTimer2').attr('data-timer', $('#firstPhase').val());
-=======
 	$('#submitTime').click(function () {        
         var firstPhase;
         var secondPhase;
@@ -140,7 +134,7 @@ $(document).on('pageinit', '#timeInput', function(){
         
 		$('#CountDownTimer').attr('data-timer', firstPhase);
         $('#CountDownTimer2').attr('data-timer', firstPhase);
->>>>>>> Stashed changes
+
 		$.mobile.changePage('#timer');
 	});
 });
