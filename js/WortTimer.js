@@ -7,10 +7,15 @@ var firstPhase;
 $(document).on('pageinit', '#timeInput', function(){
 	
 	$('#hop1').slider('disable');
+	$('#hop1').slider('refresh');
 	$('#hop2').slider('disable');
+	$('#hop1').slider('refresh');
 	$('#hop3').slider('disable');
+	$('#hop1').slider('refresh');
 	$('#hop4').slider('disable');
+	$('#hop1').slider('refresh');
 	$('#hop5').slider('disable');
+	$('#hop1').slider('refresh');
 	
 	$('#hopTimes').click(function () {
 		
@@ -46,7 +51,7 @@ $(document).on('pageinit', '#timeInput', function(){
 				break;
 			default:
 				alert("Please enter hop times!");
-		
+		}
 	});
 	
 	$('#submitTime').click(function () {
