@@ -26,9 +26,31 @@ $(document).on('pageinit', '#timeInput', function(){
 		switch(parseInt(numHops)) {
 		
 			case 1:
+				$('#hop1').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop2').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop3').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop4').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop5').slider('disable');
+				$('#hop1').slider('refresh');
+				
 				$('#hop1').slider('enable');
 				break;
 			case 2:
+				$('#hop1').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop2').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop3').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop4').slider('disable');
+				$('#hop1').slider('refresh');
+				$('#hop5').slider('disable');
+				$('#hop1').slider('refresh');
+				
 				$('#hop1').slider('enable');
 				$('#hop2').slider('enable');
 				break;
