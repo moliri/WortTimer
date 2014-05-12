@@ -47,7 +47,7 @@ $(document).on('pageinit', '#timeInput', function(){
 			default:
 				alert("Please enter hop times!");
 		
-	}});
+	});
 	
 	$('#submitTime').click(function () {
 		//alert($('#firstPhase').val());
