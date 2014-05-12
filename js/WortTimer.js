@@ -21,7 +21,6 @@ $(document).on('pageinit', '#timeInput', function(){
 		
 		var val = $(document).getElementById("numHops");
 		var numHops = val.options[val.selectedIndex].value;
-		console.log(numHops);
 		
 		switch(numHops) {
 		
