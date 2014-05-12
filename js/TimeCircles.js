@@ -187,6 +187,7 @@
         this.listeners = null;
         this.data = {
             paused: false,
+            wort_timer_paused: false,
             last_frame: 0,
             animation_frame: null,
             timer: false,
@@ -530,17 +531,17 @@
             this.data.attributes.ref_date = parse_date(attr_data_date);
         }
         // Check if this is an unpause of a timer
-        else if (typeof this.data.timer === "number") {
+        else if (typeof this.data.timer === "number" && (this.data.wort_timer_paused)) {
             if(this.data.paused) {
                 this.data.attributes.ref_date = (new Date()).getTime() + (this.data.timer * 1000);
             }
         }
         else {
             // Try to get data-timer
-            var attr_data_timer = $(this.element).data('timer');
-            if (typeof attr_data_timer === "undefined") {
+            //var attr_data_timer = $(this.element).data('timer');
+            //if (typeof attr_data_timer === "undefined") {
                 attr_data_timer = $(this.element).attr('data-timer');
-            }
+            //}
             if (typeof attr_data_timer === "string") {
                 attr_data_timer = parseFloat(attr_data_timer);
             }
@@ -557,6 +558,7 @@
 
         // Start running
         this.data.paused = false;
+        this.data.wort_timer_paused = false;
         this.update();
     };
 
@@ -573,6 +575,11 @@
         this.data.paused = true;
         window.top.cancelAnimationFrame(this.data.animation_frame);
     };
+    
+    TC_Instance.prototype.pause = function (){
+        this.data.wort_timer_paused = true;
+        this.stop();
+    }
 
     TC_Instance.prototype.destroy = function() {
         this.stop();
@@ -717,6 +724,13 @@
     TC_Class.prototype.stop = function() {
         this.foreach(function(instance) {
             instance.stop();
+        });
+        return this;
+    };
+    
+    TC_Class.prototype.pause = function() {
+        this.foreach(function(instance) {
+            instance.pause();
         });
         return this;
     };

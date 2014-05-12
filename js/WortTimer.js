@@ -1,6 +1,8 @@
 "use strict";
 
-var firstPhase;
+
+var timerPhases = [];
+var phaseIndex = 0;
 
 $(document).on('pageinit', '#home', function(){
 	$('#extract').click(function(){
@@ -11,6 +13,7 @@ $(document).on('pageinit', '#home', function(){
 /* Input page events and functions */
 /* starting script for input page */
 $(document).on('pageinit', '#timeInput', function(){
+<<<<<<< Updated upstream
 	
 	$('#hop1').slider('disable');
 	$('#hop1').slider('refresh');
@@ -120,6 +123,24 @@ $(document).on('pageinit', '#timeInput', function(){
 		//alert($('#firstPhase').val());
 		$('#CountDownTimer').attr('data-timer', $('#firstPhase').val());
         $('#CountDownTimer2').attr('data-timer', $('#firstPhase').val());
+=======
+	$('#submitTime').click(function () {        
+        var firstPhase;
+        var secondPhase;
+        var numHops;
+        firstPhase = parseInt($('#firstPhase').val());
+        secondPhase = parseInt($('#secondPhase').val());
+        numHops = parseInt($('#numIntervals').val());
+        
+        
+        timerPhases.push(firstPhase);
+        for(var i = 1; i < numHops+1; i++){
+            timerPhases.push(secondPhase);
+        }
+        
+		$('#CountDownTimer').attr('data-timer', firstPhase);
+        $('#CountDownTimer2').attr('data-timer', firstPhase);
+>>>>>>> Stashed changes
 		$.mobile.changePage('#timer');
 	});
 });
@@ -127,34 +148,75 @@ $(document).on('pageinit', '#timeInput', function(){
 /* Timer page events and functions */
 /* starting script for timer page */
 $(document).on('pageinit','#timer', function() {
-	$("#CountDownTimer").TimeCircles({
+
+    $("#CountDownTimer").TimeCircles({
 		"time" : { "Days": { "show": false }, "Hours": { "show": false },"Seconds":{"show":false}},
 		"count_past_zero": false
-	});
+    });
 
-	$("#CountDownTimer2").TimeCircles({
-		"time" : { "Days": { "show": false }, "Hours": { "show": false },"Minutes":{"show":false}},
-		"count_past_zero": false
-	});
-	//$("#CountDownTimer").TimeCircles().stop();
-	
-	// Start and stop are methods applied on the public TimeCircles instance
+    $("#CountDownTimer2").TimeCircles({
+        "time" : { "Days": { "show": false }, "Hours": { "show": false },"Minutes":{"show":false}},
+        "count_past_zero": false
+    });
+
+    // Start and stop are methods applied on the public TimeCircles instance
 	$(".startTimer").click(function() {
 		$("#CountDownTimer").TimeCircles().start();
 		$("#CountDownTimer2").TimeCircles().start();
 	});
    
 	$(".stopTimer").click(function() {
-		$("#CountDownTimer").TimeCircles().stop();
-		$("#CountDownTimer2").TimeCircles().stop();
+		$("#CountDownTimer").TimeCircles().pause();
+		$("#CountDownTimer2").TimeCircles().pause();
 	});       
 
 	$("#CountDownTimer").TimeCircles().addListener(timeElapsed, "visible");
 	$("#CountDownTimer2").TimeCircles().addListener(timeElapsed, "visible");
 });
 
-function timeElapsed(unit, value, total) {
-    if (total === 0) {
-        alert("Time is up!");
+
+$(document).on('pagebeforeshow','#timer', function() {
+	
+    if (phaseIndex > 0) { //reset the data-timer attribute, then rebuild the objects.
+        
+        $('#CountDownTimer').attr('data-timer', timerPhases[phaseIndex]);
+        $('#CountDownTimer2').attr('data-timer', timerPhases[phaseIndex]);        
+        
+        $("#CountDownTimer").TimeCircles({
+            "time" : { "Days": { "show": false }, "Hours": { "show": false },"Seconds":{"show":false}},
+            "count_past_zero": false
+        });
+
+        $("#CountDownTimer2").TimeCircles({
+            "time" : { "Days": { "show": false }, "Hours": { "show": false },"Minutes":{"show":false}},
+            "count_past_zero": false
+        });
+        
+        $('#CountDownTimer').TimeCircles();
+        $('#CountDownTimer2').TimeCircles();
+        $('#CountDownTimer').TimeCircles().start();
+        $('#CountDownTimer2').TimeCircles().start();
+        
     }
+});
+
+
+
+function timeElapsed(unit, value, total) {
+    if (total === 0  ) {
+        if (phaseIndex < timerPhases.length-1) {
+            alert("Time is up!\nHit OK to move to the next brewing phase.");
+        
+            phaseIndex++;
+        
+            $.mobile.changePage('#timer', { allowSamePageTransition: true });
+        }
+        else {
+            alert("You're done brewing! Enjoy!");
+        }
+    }    
 }
+
+
+
+
