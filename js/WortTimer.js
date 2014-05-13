@@ -127,18 +127,18 @@ $(document).on('pageinit', '#extractInput', function(){
 	
 	$('#submitTime').click(function () {        
         var val = document.getElementById("numHops");
-        var firstPhase = parseInt($('#firstPhase').val());
-        var secondPhase = parseInt($('#secondPhase').val());
+        var steepTime = parseInt($('#steepTime').val());
+        var boilTime = parseInt($('#boilTime').val());
         var numHops = parseInt(val.options[val.selectedIndex].value);
         
         
-        timerPhases.push(firstPhase);
+        timerPhases.push(steepTime);
         for(var i = 1; i < numHops+1; i++){
-            timerPhases.push(secondPhase);
+            timerPhases.push(boilTime);
         }
         
-		$('#CountDownTimer').attr('data-timer', firstPhase);
-        $('#CountDownTimer2').attr('data-timer', firstPhase);
+		$('#CountDownTimer').attr('data-timer', steepTime);
+        $('#CountDownTimer2').attr('data-timer', steepTime);
 
 		$.mobile.changePage('#timer');
 	});
