@@ -183,7 +183,7 @@ a:focus {
 	
 }
 
-#timeInput, #timeInput2, #timeInput3 {
+#timeInput, #timeInput2, #timeInput3, #home {
 	background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
 	background-color: #000;
 }
