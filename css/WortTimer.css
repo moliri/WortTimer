@@ -183,7 +183,7 @@ a:focus {
 	
 }
 
-#timeInput, #timeInput2, #timeInput3, #home {
+#home, #extractInput, #partialMashInput, #allGrainInput {
 	background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
 	background-color: #000;
 }

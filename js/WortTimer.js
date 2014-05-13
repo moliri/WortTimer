@@ -6,21 +6,21 @@ var phaseIndex = 0;
 
 $(document).on('pageinit', '#home', function(){
 	$('#extract').click(function(){
-		$.mobile.changePage('#timeInput');
+		$.mobile.changePage('#extractInput');
 	});
 	
 	$('#partialMash').click(function(){
-		$.mobile.changePage('#timeInput2');
+		$.mobile.changePage('#partialMashInput');
 	});
 	$('#allGrain').click(function(){
-		$.mobile.changePage('#timeInput3');
+		$.mobile.changePage('#allGrainInput');
 	});
 	
 });
 
 /* Input page events and functions */
 /* starting script for input page */
-$(document).on('pageinit', '#timeInput', function(){
+$(document).on('pageinit', '#extractInput', function(){
 	
 	$('#hop1').slider('disable');
 	$('#hop1').slider('refresh');
@@ -66,7 +66,6 @@ $(document).on('pageinit', '#timeInput', function(){
 				$('#hop1').slider('refresh');
 				$('#hop5').slider('disable');
 				$('#hop1').slider('refresh');
-				
 				$('#hop1').slider('enable');
 				$('#hop2').slider('enable');
 				break;
