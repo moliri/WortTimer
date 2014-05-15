@@ -645,3 +645,58 @@ ul.panelList li a{
      font-size: 0.9em;
 }
  
+.ui-slider-track{
+    width: 260px;
+}
+.priceRangeInfo{
+    position: relative;
+    height: 30px;
+    margin-top: 60px;
+    margin-left: -50px;
+}
+
+.priceRangeInfo label{
+    position: absolute;
+    top: -40px;
+    left: 60px;
+}                            /* moves label field */
+.priceRangeInfo #buying_slider_1{
+    top: -50px;
+    position: absolute;
+    left: 140px;
+    width: 25px;
+}       /* moves first input field */ 
+.priceRangeInfo #buying_slider_2{
+    top: -50px;
+    position: absolute;
+    left: 180px;
+    width: 25px;
+} 
+.priceRangeInfo #buying_slider_3{
+    top: -50px;
+    position: absolute;
+    left: 220px;
+    width: 25px;
+}      /* move second input field */ 
+
+.priceRangeInfo #buying_slider_4{
+    top: -50px;
+    position: absolute;
+    left: 260px;
+    width: 25px;
+}  
+
+.priceRangeInfo #buying_slider_5{
+    top: -50px;
+    position: absolute;
+    left: 300px;
+    width: 25px;
+}  
+
+.priceRangeInfo div.ui-slider{
+    position: absolute;
+}                   /* move both sliders - adressing 1st slider with CSS is hard */ 
+.priceRangeInfo div:last-child{
+    position: absolute;
+    left: 0px;
+}

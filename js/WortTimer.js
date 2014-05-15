@@ -15,123 +15,26 @@ $(document).on('pageinit', '#home', function(){
 	$('#allGrain').click(function(){
 		$.mobile.changePage('#allGrainInput');
 	});
-	
 });
 
 /* Input page events and functions */
 /* starting script for input page */
-$(document).on('pageinit', '#extractInput', function(){
-	
-	$('#hop1').slider('disable');
-	$('#hop1').slider('refresh');
-	$('#hop2').slider('disable');
-	$('#hop1').slider('refresh');
-	$('#hop3').slider('disable');
-	$('#hop1').slider('refresh');
-	$('#hop4').slider('disable');
-	$('#hop1').slider('refresh');
-	$('#hop5').slider('disable');
-	$('#hop1').slider('refresh');
-	
-	$('#hopTimes').click(function () {
-		
+$(document).on('pagecreate', '#extractInput', function(){	
+
+	/* hide all the sliders when then page is initialized */
+	$("#hops_at").css('visibility', 'hidden');
+	for (var i = 1; i <= 5; i ++) {
+	    var slider = "#buying_slider_" + i.toString();
+		$(slider).css('visibility', 'hidden').parent('.ui-slider').css('visibility', 'hidden');
+	    $(slider).slider("refresh");
+	}
+
+	/* submit form */
+	$('#submitTime').click(function () {   
 		var val = document.getElementById("numHops");
-		var numHops = val.options[val.selectedIndex].value;
-		console.log(numHops);
-		
-		switch(parseInt(numHops)) {
-		
-			case 1:
-				$('#hop1').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop2').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop3').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop4').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop5').slider('disable');
-				$('#hop1').slider('refresh');
-				
-				$('#hop1').slider('enable');
-				break;
-			case 2:
-				$('#hop1').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop2').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop3').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop4').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop5').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop1').slider('enable');
-				$('#hop2').slider('enable');
-				break;
-			case 3:
-				$('#hop1').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop2').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop3').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop4').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop5').slider('disable');
-				$('#hop1').slider('refresh');
-				
-				$('#hop1').slider('enable');
-				$('#hop2').slider('enable');
-				$('#hop3').slider('enable');
-				break;
-			case 4:
-				$('#hop1').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop2').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop3').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop4').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop5').slider('disable');
-				$('#hop1').slider('refresh');
-				
-				$('#hop1').slider('enable');
-				$('#hop2').slider('enable');
-				$('#hop3').slider('enable');
-				$('#hop4').slider('enable');
-				break;
-			case 5:
-				$('#hop1').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop2').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop3').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop4').slider('disable');
-				$('#hop1').slider('refresh');
-				$('#hop5').slider('disable');
-				$('#hop1').slider('refresh');
-				
-				$('#hop1').slider('enable');
-				$('#hop2').slider('enable');
-				$('#hop3').slider('enable');
-				$('#hop4').slider('enable');
-				$('#hop5').slider('enable');
-				break;
-			default:
-				alert("Please enter hop times!");
-		}
-	});
-	
-	$('#submitTime').click(function () {        
-        var val = document.getElementById("numHops");
-        var steepTime = parseInt($('#steepTime').val());
-        var boilTime = parseInt($('#boilTime').val());
-        var numHops = parseInt(val.options[val.selectedIndex].value);
-        
-        
+    	var steepTime = parseInt($('#steepTime').val());
+   	 	var boilTime = parseInt($('#boilTime').val());
+    	var numHops = parseInt(val.options[val.selectedIndex].value);      
         timerPhases.push(steepTime);
         for(var i = 1; i < numHops+1; i++){
             timerPhases.push(boilTime);
@@ -141,6 +44,75 @@ $(document).on('pageinit', '#extractInput', function(){
         $('#CountDownTimer2').attr('data-timer', steepTime);
 
 		$.mobile.changePage('#timer');
+	});
+
+	var val = document.getElementById("numHops");
+    var steepTime = parseInt($('#steepTime').val());
+   	var boilTime = parseInt($('#boilTime').val());
+   	if (isNaN(boilTime)) boilTime = 100;
+    var numHops = parseInt(val.options[val.selectedIndex].value); 
+	var handles = numHops;
+	
+	/* Constraint on handles */
+	$('.BuyingSlider').change(function() {
+	    var currentval = parseInt($(this).attr("slider"));
+	    if(currentval == 1){
+	        var min_num = 1;
+	        var min = 0;
+	    }else{
+	        var min_num = currentval-1;
+	        var min = parseInt($('#buying_slider_'+min_num).val());
+	    }
+	    if(currentval == handles){
+	        var max_num = handles;
+	        var max = boilTime;
+	    }else{
+	        var max_num = currentval+1;
+	        var max = parseInt($('#buying_slider_'+max_num).val());
+	    }
+	    var current = parseInt($('#buying_slider_'+currentval).val());
+	});
+
+	/* handle number of hops changes */
+	$("#numHops").bind("change", function(){
+		val = document.getElementById("numHops");
+	    steepTime = parseInt($('#steepTime').val());
+	   	boilTime = parseInt($('#boilTime').val());
+	   	if (isNaN(boilTime)) boilTime = 100;
+	    numHops = parseInt(val.options[val.selectedIndex].value); 
+	    for (var i = 1; i <= 5; i++) {
+	    	var slider = "#buying_slider_" + i.toString();
+	    	if (i <= numHops) {
+				$(slider).css('visibility', '').parent('.ui-slider').css('visibility', '');
+				$(slider).val((i-1) * boilTime/4);
+				$(slider).slider("refresh");
+	    	} else {
+				$(slider).css('visibility', 'hidden').parent('.ui-slider').css('visibility', 'hidden');
+				$(slider).val($(slider).attr('max'));
+	    		$(slider).slider("refresh");
+	    	}
+	    }
+	    if (numHops === 0) {
+	    	$("#hops_at").css('visibility', 'hidden');
+	    } else {
+	    	$("#hops_at").css('visibility', '');
+	    }
+	});
+
+	/* handle boilTime changes */
+	$("#boilTime").bind("change", function() {
+		var boilTime = parseInt($('#boilTime').val());
+		if (isNaN(boilTime)) boilTime = 100;
+	    for (var i = 1; i <= 5; i ++) {
+	    	var slider = "#buying_slider_" + i.toString();
+	    	if ($(slider).css('visibility') === 'hidden') {
+	    		$(slider).val(boilTime);
+	    	} else {
+	    		alert((i-1) * boilTime/4);
+	    		$(slider).val((i-1) * boilTime/4);
+	    	}
+			$(slider).attr("max", boilTime).slider("refresh");
+	    }	
 	});
 });
 
@@ -202,7 +174,7 @@ $(document).on('pagebeforeshow','#timer', function() {
 
 
 function timeElapsed(unit, value, total) {
-    if (total === 0  ) {
+    if (total === 0) {
         if (phaseIndex < timerPhases.length-1) {
             alert("Time is up!\nHit OK to move to the next brewing phase.");
         
@@ -215,6 +187,8 @@ function timeElapsed(unit, value, total) {
         }
     }    
 }
+
+
 
 
 
