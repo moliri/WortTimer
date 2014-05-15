@@ -50,9 +50,15 @@ $(document).on('pagecreate', '#extractInput', function(){
         timerPhases.push(steepTime);
         timerPhases.push(boilTime);
         
-        for(var i = 0; i < numHops; i++){
+        for(var i = 1; i <= numHops; i++){
             var slider = "#buying_slider_" + i.toString();
-            hopTimes.push(boilTime - $(slider).val())
+            var sliderVal = parseInt($(slider).val());
+            
+            if(!inDevelopmentMode){
+                sliderVal = 60*sliderVal;
+            }
+            
+            hopTimes.push(boilTime - sliderVal);
         }
         
 		$('#CountDownTimer').attr('data-timer', steepTime);
