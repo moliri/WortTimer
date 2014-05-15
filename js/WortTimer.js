@@ -52,7 +52,7 @@ $(document).on('pagecreate', '#extractInput', function(){
    	if (isNaN(boilTime)) boilTime = 100;
     var numHops = parseInt(val.options[val.selectedIndex].value); 
 	var handles = numHops;
-	
+
 	/* Constraint on handles */
 	$('.BuyingSlider').change(function() {
 	    var currentval = parseInt($(this).attr("slider"));
@@ -108,7 +108,6 @@ $(document).on('pagecreate', '#extractInput', function(){
 	    	if ($(slider).css('visibility') === 'hidden') {
 	    		$(slider).val(boilTime);
 	    	} else {
-	    		alert((i-1) * boilTime/4);
 	    		$(slider).val((i-1) * boilTime/4);
 	    	}
 			$(slider).attr("max", boilTime).slider("refresh");
