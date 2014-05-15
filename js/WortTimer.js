@@ -1,8 +1,12 @@
 "use strict";
 
+// Flag for dev mode vs user testing mode
+// Dev mode speeds the timers up by a factor of 60
+var inDevelopmentMode = false;
 
 var timerPhases = [];
 var phaseIndex = 0;
+var hopTimes = [];
 
 $(document).on('pageinit', '#home', function(){
 	$('#extract').click(function(){
@@ -29,15 +33,26 @@ $(document).on('pagecreate', '#extractInput', function(){
 	    $(slider).slider("refresh");
 	}
 
-	/* submit form */
-	$('#submitTime').click(function () {   
-		var val = document.getElementById("numHops");
-    	var steepTime = parseInt($('#steepTime').val());
-   	 	var boilTime = parseInt($('#boilTime').val());
-    	var numHops = parseInt(val.options[val.selectedIndex].value);      
+	/* submit form */	
+	$('#submitTime').click(function () {        
+        var val = document.getElementById("numHops");
+        var steepTime = parseInt($('#steepTime').val()); 
+        var boilTime = parseInt($('#boilTime').val()); 
+        
+        // Slow the timers down if we are not in dev mode
+        if(!inDevelopmentMode){
+            steepTime = 60*steepTime;
+            boilTime = 60*boilTime;
+        }
+        
+        var numHops = parseInt(val.options[val.selectedIndex].value);
+        
         timerPhases.push(steepTime);
-        for(var i = 1; i < numHops+1; i++){
-            timerPhases.push(boilTime);
+        timerPhases.push(boilTime);
+        
+        for(var i = 0; i < numHops; i++){
+            var slider = "#buying_slider_" + i.toString();
+            hopTimes.push(boilTime - $(slider).val())
         }
         
 		$('#CountDownTimer').attr('data-timer', steepTime);
@@ -184,7 +199,17 @@ function timeElapsed(unit, value, total) {
         else {
             alert("You're done brewing! Enjoy!");
         }
-    }    
+    }
+    
+    // Deal with the hop times!
+    if (phaseIndex > 0) {
+    
+        if($.inArray(total, hopTimes) !== -1){             
+            alert("Time to add hops!");
+            
+            
+        }
+    }
 }
 
 
