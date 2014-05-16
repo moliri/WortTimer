@@ -12,13 +12,16 @@ $(document).on('pageinit', '#home', function(){
 	$('#extract').click(function(){
 		$.mobile.changePage('#extractInput');
 	});
-	
+	$('#partialMash').attr("disabled","disabled");
+	$('#allGrain').attr("disabled", "disabled");
+	/*
 	$('#partialMash').click(function(){
 		$.mobile.changePage('#partialMashInput');
 	});
 	$('#allGrain').click(function(){
 		$.mobile.changePage('#allGrainInput');
 	});
+	*/
 });
 
 /* Input page events and functions */
@@ -30,7 +33,7 @@ $(document).on('pagecreate', '#extractInput', function(){
 	for (var i = 1; i <= 5; i ++) {
 	    var slider = "#buying_slider_" + i.toString();
 		$(slider).css('visibility', 'hidden').parent('.ui-slider').css('visibility', 'hidden');
-	    $(slider).slider("refresh");
+	    $(slider).attr("max", 60).slider("refresh");
 	}
 
 	/* submit form */	
