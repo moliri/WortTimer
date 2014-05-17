@@ -12,8 +12,8 @@ $(document).on('pageinit', '#home', function(){
 	$('#extract').click(function(){
 		$.mobile.changePage('#extractInput');
 	});
-	$('#partialMash').attr("disabled","disabled");
-	$('#allGrain').attr("disabled", "disabled");
+	//$('#partialMash').attr("disabled","disabled");
+	//$('#allGrain').attr("disabled", "disabled");
 	/*
 	$('#partialMash').click(function(){
 		$.mobile.changePage('#partialMashInput');
