@@ -14,14 +14,14 @@ $(document).on('pageinit', '#home', function(){
 	});
 	//$('#partialMash').attr("disabled","disabled");
 	//$('#allGrain').attr("disabled", "disabled");
-	/*
+	
 	$('#partialMash').click(function(){
 		$.mobile.changePage('#partialMashInput');
 	});
 	$('#allGrain').click(function(){
 		$.mobile.changePage('#allGrainInput');
 	});
-	*/
+	
 });
 
 /* Input page events and functions */
