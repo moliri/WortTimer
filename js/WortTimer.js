@@ -4,29 +4,43 @@
 // Dev mode speeds the timers up by a factor of 60
 var inDevelopmentMode = false;
 
+var brewType;
 var timerPhases = [];
 var phaseIndex = 0;
 var hopTimes = [];
 
 $(document).on('pageinit', '#home', function(){
 	$('#extract').click(function(){
-		$.mobile.changePage('#extractInput');
+		brewType = 0;
+		$('div').remove('#sparging');
+		$('#inputPage').trigger('refresh');
+		$.mobile.changePage('#inputPage');
 	});
 	//$('#partialMash').attr("disabled","disabled");
 	//$('#allGrain').attr("disabled", "disabled");
 	
 	$('#partialMash').click(function(){
-		$.mobile.changePage('#partialMashInput');
+		brewType = 1;
+		$('#firstPhase').text("MASH WAIT TIME (MIN):");
+		$('div').remove('#sparging');
+		$('#inputPage').trigger('refresh');
+		$.mobile.changePage('#inputPage');
 	});
 	$('#allGrain').click(function(){
-		$.mobile.changePage('#allGrainInput');
+		brewType = 2;
+		$('#firstPhase').text("MASH WAIT TIME (MIN):");
+		$('div').remove('#sparging');
+		var str = '<div data-role="fieldcontain" id="sparging"><label for="spargingTime"> Sparging Time (min): </label> <input id="spargingTime" name="spargingTime" value="60" type="text"/></div>'
+		$(str).insertAfter("#firstPhaseForm");
+		$('#inputPage').trigger('create');
+		$.mobile.changePage('#inputPage');
 	});
 	
 });
 
 /* Input page events and functions */
 /* starting script for input page */
-$(document).on('pagecreate', '#extractInput', function(){	
+$(document).on('pageinit', '#inputPage', function(){	
 
 	/* hide all the sliders when then page is initialized */
 	$("#hops_at").css('visibility', 'hidden');
@@ -40,17 +54,22 @@ $(document).on('pagecreate', '#extractInput', function(){
 	$('#submitTime').click(function () {        
         var val = document.getElementById("numHops");
         var steepTime = parseInt($('#steepTime').val()); 
-        var boilTime = parseInt($('#boilTime').val()); 
+        var spargingTime = parseInt($('#spargingTime').val());
+        var boilTime = parseInt($('#boilTime').val());
         
         // Slow the timers down if we are not in dev mode
         if(!inDevelopmentMode){
             steepTime = 60*steepTime;
             boilTime = 60*boilTime;
+            spargingTime = 60*spargingTime;
         }
         
         var numHops = parseInt(val.options[val.selectedIndex].value);
         
         timerPhases.push(steepTime);
+        if (brewType === 2) {
+        	timerPhases.push(spargingTime);
+        }
         timerPhases.push(boilTime);
         
         for(var i = 1; i <= numHops; i++){
@@ -214,9 +233,7 @@ function timeElapsed(unit, value, total) {
     if (phaseIndex > 0) {
     
         if($.inArray(total, hopTimes) !== -1){             
-            alert("Time to add hops!");
-            
-            
+    	      alert("Time to add hops!");    
         }
     }
 }

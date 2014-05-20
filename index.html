@@ -98,7 +98,7 @@
     </div>
     
     <!-- Extract Input Page -->
-    <div data-role="page" id="extractInput" data-cache="false">
+    <div data-role="page" id="inputPage" data-cache="false">
         
 		<div data-role="header" data-theme="b">
             <h1> Wort Timer </h1> 
@@ -106,8 +106,8 @@
 		
         <div data-role="content" class="content">
             <h1 id="welcome"> Wort Timer</h1>
-            <div data-role="fieldcontain">
-                <label for="steepTime">Steep Time (min): </label>      
+            <div data-role="fieldcontain" id="firstPhaseForm">
+                <label for="steepTime" id="firstPhase">Steep Time (min): </label>      
                 <input id="steepTime" name="steepTime" value="30" type="text"/>
             </div>
             <div data-role="fieldcontain">
@@ -139,103 +139,6 @@
         </div>
 		
     </div>
-
-
-    <!-- Partial Mash Input Page -->
-    <div data-role="page" id="partialMashInput">
-        
-		<div data-role="header" data-theme="b">
-            <h1> Wort Timer </h1> 
-        </div>
-		
-        <div data-role="content" class="content">
-            <h1 id="welcome"> Wort Timer</h1>
-            <div data-role="fieldcontain">
-                <label for="steepTime">Mash Wait Time (min): </label>      
-                <input id="steepTime" name="steepTime" type="text"/>
-            </div>
-            <div data-role="fieldcontain">
-                <label for="boilTime">Total Boil Time (min): </label>      
-                <input id="boilTime" name="boilTime" type="text"/>
-            </div>
-            <div data-role="fieldcontain">
-		<label for="select-choice-1" class="select">Number of Hops:</label>
-   		<select name="select-choice-1" id="numHops">
-   		<option value=0>Select # of Hops</option>
-      		<option value=1>1</option>
-      		<option value=2>2</option>
-      		<option value=3>3</option>
-      		<option value=4>4</option>
-      		<option value=5>5</option>
-   		</select>
-	    </div>
-	    <div>
-	    	<button id="hopTimes" type="button">Set Hop Times</button>
-	    </div>
-	    <div>
-	    	<input type="range" name="hop1" id="hop1" value="0" min="0" max="150" data-highlight="false" />
-	    	<input type="range" name="hop2" id="hop2" value="0" min="0" max="150" data-highlight="false" />
-	    	<input type="range" name="hop3" id="hop3" value="0" min="0" max="150" data-highlight="false" />
-	    	<input type="range" name="hop4" id="hop4" value="0" min="0" max="150" data-highlight="false" />
-	    	<input type="range" name="hop5" id="hop5" value="0" min="0" max="150" data-highlight="false" />
-	    </div>
-            <div data-role="fieldcontain">     
-                <input type="button" id="submitTime" value="Submit" />
-            </div> 
-        </div>
-		
-    </div>
-
-
-    <!-- All Grain Input Page -->
-    <div data-role="page" id="allGrainInput">
-        
-		<div data-role="header" data-theme="b">
-            <h1> Wort Timer </h1> 
-        </div>
-		
-        <div data-role="content" class="content">
-            <h1 id="welcome"> Wort Timer</h1>
-            <div data-role="fieldcontain">
-                <label for="steepTime">Mash Wait Time (min): </label>      
-                <input id="steepTime" name="steepTime" type="text"/>
-            </div>
-            <div data-role="fieldcontain">
-                <label for="spargingTime">Sparging Time (min): </label>      
-                <input id="spargingTime" name="steepTime" type="text"/>
-            </div>
-            <div data-role="fieldcontain">
-                <label for="boilTime">Total Boil Time (min): </label>      
-                <input id="boilTime" name="boilTime" type="text"/>
-            </div>
-            <div data-role="fieldcontain">
-		<label for="select-choice-1" class="select">Number of Hops:</label>
-   		<select name="select-choice-1" id="numHops">
-   		<option value=0>Select # of Hops</option>
-      		<option value=1>1</option>
-      		<option value=2>2</option>
-      		<option value=3>3</option>
-      		<option value=4>4</option>
-      		<option value=5>5</option>
-   		</select>
-	    </div>
-	    <div>
-	    	<button id="hopTimes" type="button">Set Hop Times</button>
-	    </div>
-	    <div>
-	    	<input type="range" name="hop1" id="hop1" value="0" min="0" max="150" data-highlight="false" />
-	    	<input type="range" name="hop2" id="hop2" value="0" min="0" max="150" data-highlight="false" />
-	    	<input type="range" name="hop3" id="hop3" value="0" min="0" max="150" data-highlight="false" />
-	    	<input type="range" name="hop4" id="hop4" value="0" min="0" max="150" data-highlight="false" />
-	    	<input type="range" name="hop5" id="hop5" value="0" min="0" max="150" data-highlight="false" />
-	    </div>
-            <div data-role="fieldcontain">     
-                <input type="button" id="submitTime" value="Submit" />
-            </div> 
-        </div>
-		
-    </div>
-
 
 	<!-- Timer Page -->
     <div data-role="page" id="timer">
