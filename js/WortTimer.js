@@ -56,7 +56,7 @@ $(document).on('pageinit', '#inputPage', function(){
         var steepTime = parseInt($('#steepTime').val()); 
         var spargingTime = parseInt($('#spargingTime').val());
         var boilTime = parseInt($('#boilTime').val());
-        
+
         // Slow the timers down if we are not in dev mode
         if(!inDevelopmentMode){
             steepTime = 60*steepTime;
@@ -65,6 +65,25 @@ $(document).on('pageinit', '#inputPage', function(){
         }
         
         var numHops = parseInt(val.options[val.selectedIndex].value);
+
+        /* Input form cannot be empty */
+        var missingInput = "";
+        if (isNaN(steepTime)) {
+        	missingInput += "Steep time cannot be empty!\n";
+        } 
+        if (isNaN(spargingTime) && (brewType===2)) {
+        	missingInput += "Sparging time cannot be empty!\n";
+        }
+        if (isNaN(boilTime)) {
+        	missingInput += "Boil time cannot be empty!\n";
+        }
+        if (isNaN(numHops) || (numHops === 0)) {
+			missingInput += "Number of hops time cannot be zero!\n";
+        }
+        if (missingInput != "") {
+        	alert(missingInput);
+        	return -1;
+        }
         
         timerPhases.push(steepTime);
         if (brewType === 2) {
