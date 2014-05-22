@@ -177,6 +177,12 @@ $(document).on('pageinit', '#inputPage', function(){
 	});
 });
 
+$(document).on('pagebeforeshow','#inputPage',function (){
+    timerPhases = [];
+    hopTimes = [];
+    phaseIndex = 0;
+});
+
 /* Timer page events and functions */
 /* starting script for timer page */
 $(document).on('pageinit','#timer', function() {
@@ -209,54 +215,53 @@ $(document).on('pageinit','#timer', function() {
 
 $(document).on('pagebeforeshow','#timer', function() {
 	
-    if (phaseIndex > 0) { //reset the data-timer attribute, then rebuild the objects.
-        
-        $('#CountDownTimer').attr('data-timer', timerPhases[phaseIndex]);
-        $('#CountDownTimer2').attr('data-timer', timerPhases[phaseIndex]);        
-        
-        $("#CountDownTimer").TimeCircles({
-            "time" : { "Days": { "show": false }, "Hours": { "show": false },"Seconds":{"show":false}},
-            "count_past_zero": false
-        });
+    $('#CountDownTimer').attr('data-timer', timerPhases[phaseIndex]);
+    $('#CountDownTimer2').attr('data-timer', timerPhases[phaseIndex]);        
+    
+    $("#CountDownTimer").TimeCircles({
+        "time" : { "Days": { "show": false }, "Hours": { "show": false },"Seconds":{"show":false}},
+        "count_past_zero": false
+    });
 
-        $("#CountDownTimer2").TimeCircles({
-            "time" : { "Days": { "show": false }, "Hours": { "show": false },"Minutes":{"show":false}},
-            "count_past_zero": false
-        });
+    $("#CountDownTimer2").TimeCircles({
+        "time" : { "Days": { "show": false }, "Hours": { "show": false },"Minutes":{"show":false}},
+        "count_past_zero": false
+    });
+    
+    $('#CountDownTimer').TimeCircles();
+    $('#CountDownTimer2').TimeCircles();
+    $('#CountDownTimer').TimeCircles().start();
+    $('#CountDownTimer2').TimeCircles().start();
         
-        $('#CountDownTimer').TimeCircles();
-        $('#CountDownTimer2').TimeCircles();
-        $('#CountDownTimer').TimeCircles().start();
-        $('#CountDownTimer2').TimeCircles().start();
-        
-    }
+   
 });
 
 
 
 function timeElapsed(unit, value, total) {
-    if (total === 0) {
-        if (phaseIndex < timerPhases.length-1) {
-            alert("Time is up!\nHit OK to move to the next brewing phase.");
-        
-            phaseIndex++;
-        
-            $.mobile.changePage('#timer', { allowSamePageTransition: true });
+
+    if ($.mobile.activePage.attr('id') === 'timer') {
+        if (total === 0) {
+            if (phaseIndex < timerPhases.length-1) {
+                alert("Time is up!\nHit OK to move to the next brewing phase.");
+            
+                phaseIndex++;
+            
+                $.mobile.changePage('#timer', { allowSamePageTransition: true });
+            }
+            else {
+                alert("You're done brewing! Enjoy!");
+            }
         }
-        else {
-            alert("You're done brewing! Enjoy!");
-        }
-    }
-    
-    // Deal with the hop times!
-    if (phaseIndex > 0) {
-    
-        if($.inArray(total, hopTimes) !== -1){             
-    	      alert("Time to add hops!");    
+        
+        // Deal with the hop times!
+        if (phaseIndex > 0) {
+            if($.inArray(total, hopTimes) !== -1){ 
+                  alert("Time to add hops!");    
+            }
         }
     }
 }
-
 
 
 
