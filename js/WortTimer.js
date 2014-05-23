@@ -255,7 +255,7 @@ function timeElapsed(unit, value, total) {
         }
         
         // Deal with the hop times!
-        if (phaseIndex > 0) {
+        if (phaseIndex === timerPhases.length - 1) {
             if($.inArray(total, hopTimes) !== -1){ 
                   alert("Time to add hops!");    
             }
