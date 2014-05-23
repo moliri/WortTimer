@@ -657,12 +657,12 @@
             Minutes: {
                 show: true,
                 text: "Minutes",
-                color: "#1144AA"
+                color: "#6ECFF6"
             },
             Seconds: {
                 show: true,
                 text: "Seconds",
-                color: "#14D100"
+                color: "#82CA9D"
             }
         }
     };
