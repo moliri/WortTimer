@@ -636,7 +636,7 @@
         start: true,
         animation: "smooth",
         count_past_zero: true,
-        circle_bg_color: "#0b9dfe",
+        circle_bg_color: "#40484F",
         use_background: true,
         fg_width: 0.1,
         bg_width: 1.0,
@@ -657,12 +657,12 @@
             Minutes: {
                 show: true,
                 text: "Minutes",
-                color: "#40484F"
+                color: "#0b9dfe"
             },
             Seconds: {
                 show: true,
                 text: "Seconds",
-                color: "#40484F"
+                color: "#0b9dfe"
             }
         }
     };
