@@ -16,6 +16,11 @@ $(document).on('pageinit', '#home', function(){
 		$('#inputPage').trigger('refresh');
 		$.mobile.changePage('#inputPage');
 	});
+	
+	$('#extractInfo').click(function(){
+		alert("Extract brewing is the form of brewing used by most new brewers. Extract brewing involves the use of concentrated Malt Extract in the brewing process. The use of malt extract lets the brewer skip the mashing process, and move directly to the boil and fermentation steps. Extract brewing takes considerably less time and equipment than All Grain brewing. In extract brewing, Malt Extract is added directly to the brew pot and boiled together with Hops to create a sweet liquid called wort for fermenting. You can make very high quality beer using extract brewing, but it does not offer the full range of ingredient and process variations that are possible with All Grain brewing.");
+	});
+	
 	//$('#partialMash').attr("disabled","disabled");
 	//$('#allGrain').attr("disabled", "disabled");
 	
@@ -26,6 +31,11 @@ $(document).on('pageinit', '#home', function(){
 		$('#inputPage').trigger('refresh');
 		$.mobile.changePage('#inputPage');
 	});
+	
+	$('#partialMashInfo').click(function(){
+		alert("Partial mash brewing is used by intermediate brewers who want the extra flexibility of being able to include certain malts and other ingredients, but lack the equipment or time needed for all grain brewing. Partial mash offers some of the simplicity of Extract Brewing while offering some of the flexibility of all grain brewing. Partial mash brewing follows the same steps as all grain brewing, but only specialty grains are mashed with a small amount of pale malt to provide enzymes. After mashing, extract malts are added to provide the bulk of the fermentable sugars.");
+	});
+	
 	$('#allGrain').click(function(){
 		brewType = 2;
 		$('#firstPhase').text("MASH WAIT TIME (MIN):");
@@ -34,6 +44,10 @@ $(document).on('pageinit', '#home', function(){
 		$(str).insertAfter("#firstPhaseForm");
 		$('#inputPage').trigger('create');
 		$.mobile.changePage('#inputPage');
+	});
+	
+	$('#allGrainInfo').click(function(){
+		alert("All grain brewing is the advanced process used by commercial and Craft Brewers to create commercial beers. With a little bit of equipment and time, the homebrewer can create all-grain brews as well. The main difference between all-grain and Extract Brewing or Partial Mash brewing is that in an all-grain brew, the entire volume of unfermented beer (called wort) is created by mashing crushed Malt and running hot water through the grain bed in a process called lautering.");
 	});
 	
 });
