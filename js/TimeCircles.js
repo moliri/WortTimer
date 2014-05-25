@@ -636,10 +636,10 @@
         start: true,
         animation: "smooth",
         count_past_zero: true,
-        circle_bg_color: "#60686F",
+        circle_bg_color: "#40484F",
         use_background: true,
         fg_width: 0.1,
-        bg_width: 1.2,
+        bg_width: 1.0,
         total_duration: "Auto",
         direction: "Clockwise",
         start_angle: 0,
@@ -657,12 +657,12 @@
             Minutes: {
                 show: true,
                 text: "Minutes",
-                color: "#BFB"
+                color: "#0b9dfe"
             },
             Seconds: {
                 show: true,
                 text: "Seconds",
-                color: "#F99"
+                color: "#0b9dfe"
             }
         }
     };
