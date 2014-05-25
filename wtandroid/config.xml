@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.cordova.hellocordova" 
+	versionCode= "1"
+	version="0.0.1" 
+	xmlns="http://www.w3.org/ns/widgets" 
+	xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    
+	<name>Wort Timer</name>
+
+	<description>
+		A mobile web app for homebrewers that allows you to time out the different preparation steps of the homebrewing process.
+	</description>
+
+	<author href="https://github.com/moliri/WortTimer/" email="394-TeamPurple@googlegroups.com">
+		 Dylan Hirshkowitz, Leesha Maliakal, Zachariah Straight, Haodong Wang, Peiying Zhou, and Daniel Zuo
+	</author>
+    <content src="index.html" />
+    <access origin="*" />
+</widget>

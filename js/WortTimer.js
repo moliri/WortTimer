@@ -9,7 +9,10 @@ var timerPhases = [];
 var phaseIndex = 0;
 var hopTimes = [];
 
+
 $(document).on('pageinit', '#home', function(){
+	
+
 	$('#extract').click(function(){
 		brewType = 0;
 		$('div').remove('#sparging');
@@ -254,9 +257,12 @@ $(document).on('pagebeforeshow','#timer', function() {
 
 function timeElapsed(unit, value, total) {
 
+	var soundHandle = document.getElementById('soundHandle');
+
     if ($.mobile.activePage.attr('id') === 'timer') {
         if (total === 0) {
             if (phaseIndex < timerPhases.length-1) {
+				soundHandle.play();
                 alert("Time is up!\nHit OK to move to the next brewing phase.");
             
                 phaseIndex++;
@@ -264,6 +270,7 @@ function timeElapsed(unit, value, total) {
                 $.mobile.changePage('#timer', { allowSamePageTransition: true });
             }
             else {
+				soundHandle.play();
                 alert("You're done brewing! Enjoy!");
             }
         }
@@ -271,7 +278,8 @@ function timeElapsed(unit, value, total) {
         // Deal with the hop times!
         if (phaseIndex === timerPhases.length - 1) {
             if($.inArray(total, hopTimes) !== -1){ 
-                  alert("Time to add hops!");    
+				soundHandle.play();
+                alert("Time to add hops!");    
             }
         }
     }
