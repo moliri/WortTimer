@@ -247,10 +247,9 @@ $(document).on('pagebeforeshow','#timer', function() {
     
     $('#CountDownTimer').TimeCircles();
     $('#CountDownTimer2').TimeCircles();
-    $('#CountDownTimer').TimeCircles().start();
-    $('#CountDownTimer2').TimeCircles().start();
+    $('#CountDownTimer').TimeCircles().pause();
+    $('#CountDownTimer2').TimeCircles().pause();
         
-   
 });
 
 
