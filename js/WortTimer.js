@@ -20,7 +20,9 @@ for (var i=0; i < 5; i++ ){
 var saved = [];
 var temp;
 
+
 $(document).on('pageinit', '#home', function(){
+<<<<<<< HEAD
 
 	$('#submit_userid').click(function() {
 		userid = $("#userid_val").val();
@@ -30,6 +32,9 @@ $(document).on('pageinit', '#home', function(){
 		}
 		$("#home").trigger("create");
 	});
+=======
+	
+>>>>>>> 9dbe3f2aa05562d171f39cc04d819ac589702288
 
 	$('#extract').click(function(){
 		brewType = 0;
@@ -314,10 +319,9 @@ $(document).on('pagebeforeshow','#timer', function() {
     
     $('#CountDownTimer').TimeCircles();
     $('#CountDownTimer2').TimeCircles();
-    $('#CountDownTimer').TimeCircles().start();
-    $('#CountDownTimer2').TimeCircles().start();
+    $('#CountDownTimer').TimeCircles().pause();
+    $('#CountDownTimer2').TimeCircles().pause();
         
-   
 });
 
 $(document).on('pageinit','#completed', function () {
@@ -361,9 +365,12 @@ $(document).on('pageinit','#completed', function () {
 
 function timeElapsed(unit, value, total) {
 
+	var soundHandle = document.getElementById('soundHandle');
+
     if ($.mobile.activePage.attr('id') === 'timer') {
         if (total === 0) {
             if (phaseIndex < timerPhases.length-1) {
+				soundHandle.play();
                 alert("Time is up!\nHit OK to move to the next brewing phase.");
             
                 phaseIndex++;
@@ -371,15 +378,21 @@ function timeElapsed(unit, value, total) {
                 $.mobile.changePage('#timer', { allowSamePageTransition: true });
             }
             else {
+<<<<<<< HEAD
                 //alert("You're done brewing! Enjoy!");
                 $.mobile.changePage('#completed');
+=======
+				soundHandle.play();
+                alert("You're done brewing! Enjoy!");
+>>>>>>> 9dbe3f2aa05562d171f39cc04d819ac589702288
             }
         }
         
         // Deal with the hop times!
         if (phaseIndex === timerPhases.length - 1) {
             if($.inArray(total, hopTimes) !== -1){ 
-                  alert("Time to add hops!");    
+				soundHandle.play();
+                alert("Time to add hops!");    
             }
         }
     }
