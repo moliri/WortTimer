@@ -65,24 +65,25 @@ $(document).on('pageinit', '#home', function(){
 		$('#inputPage').trigger('create');
 		$.mobile.changePage('#inputPage');
 	});
-<<<<<<< HEAD
-=======
-	
+
 	$('#allGrainInfo').click(function(){
 		alert("All grain brewing is the advanced process used by commercial and Craft Brewers to create commercial beers. With a little bit of equipment and time, the homebrewer can create all-grain brews as well. The main difference between all-grain and Extract Brewing or Partial Mash brewing is that in an all-grain brew, the entire volume of unfermented beer (called wort) is created by mashing crushed Malt and running hot water through the grain bed in a process called lautering.");
 	});
-	
->>>>>>> 55ea0ba64600def6d570dd7d5f61fd8721aabce2
 });
 
 /* generate the list for saved items */
 function generate_saved_list(list) {
 	saved = list;
-	for (var i=0; i < list.length; i++) {
-		var name = list[i].attributes.name;
-		var objectId = list[i].id;
-		var str = '<li><a href="#" onClick="GetIndex(this)"><h2>' + name + '</h2><a href="#" data-rel="popup" data-position-to="window" data-transition="pop" class="delete" id="' + objectId + '" onClick="removeList(this)">' + objectId + '</a></li>';
-		$('#savedList').append(str);
+	$('#savedList').append('<h3 style="margin-bottom: 10px;"> Saved List </h3>');
+	if (list.length === 0) {
+		$('#savedList').append('<p> You have no saved items! </p>');
+	} else {
+		for (var i=0; i < list.length; i++) {
+			var name = list[i].attributes.name;
+			var objectId = list[i].id;
+			var str = '<li><a href="#" onClick="GetIndex(this)"><h2>' + name + '</h2><a href="#" data-rel="popup" data-position-to="window" data-transition="pop" class="delete" id="' + objectId + '" onClick="removeList(this)">' + objectId + '</a></li>';
+			$('#savedList').append(str);
+		}
 	}
 	$('#savedList').listview('refresh');
 }
@@ -341,7 +342,7 @@ function timeElapsed(unit, value, total) {
                 $.mobile.changePage('#timer', { allowSamePageTransition: true });
             }
             else {
-                alert("You're done brewing! Enjoy!");
+                //alert("You're done brewing! Enjoy!");
                 $.mobile.changePage('#completed');
             }
         }
