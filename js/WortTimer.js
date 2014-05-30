@@ -17,7 +17,8 @@ var def_hop = new Array(5);
 for (var i=0; i < 5; i++ ){
 	def_hop[i] = 0;
 }
-var saved;
+var saved = [];
+var temp;
 
 $(document).on('pageinit', '#home', function(){
 
@@ -27,13 +28,13 @@ $(document).on('pageinit', '#home', function(){
 		if (userid != "") { 
 			$("#userid").remove(); 
 		}
+		$("#home").trigger("create");
 	});
 
 	$('#extract').click(function(){
 		brewType = 0;
-		$('#firstPhase').text("STEEP TIME (MIN):");
-		$('div').remove('#sparging');
-		$('#inputPage').trigger('refresh');
+		modifyInputPage();
+		resetDefault();
 		$.mobile.changePage('#inputPage');
 	});
 	
@@ -46,9 +47,8 @@ $(document).on('pageinit', '#home', function(){
 	
 	$('#partialMash').click(function(){
 		brewType = 1;
-		$('#firstPhase').text("MASH WAIT TIME (MIN):");
-		$('div').remove('#sparging');
-		$('#inputPage').trigger('refresh');
+		modifyInputPage();
+		resetDefault();
 		$.mobile.changePage('#inputPage');
 	});
 	
@@ -58,11 +58,8 @@ $(document).on('pageinit', '#home', function(){
 	
 	$('#allGrain').click(function(){
 		brewType = 2;
-		$('#firstPhase').text("MASH WAIT TIME (MIN):");
-		$('div').remove('#sparging');
-		var str = '<div data-role="fieldcontain" id="sparging"><label for="spargingTime"> Sparging Time (min): </label> <input id="spargingTime" name="spargingTime" value="60" type="text"/></div>'
-		$(str).insertAfter("#firstPhaseForm");
-		$('#inputPage').trigger('create');
+		modifyInputPage();
+		resetDefault();
 		$.mobile.changePage('#inputPage');
 	});
 
@@ -71,10 +68,15 @@ $(document).on('pageinit', '#home', function(){
 	});
 });
 
+function get_saved_list(list) {
+	saved = list;
+}
+
 /* generate the list for saved items */
 function generate_saved_list(list) {
 	saved = list;
-	$('#savedList').append('<h3 style="margin-bottom: 10px;"> Saved List </h3>');
+	$("#savedList").empty();
+	$("#savedList").append('<h3 style="margin-bottom: 10px;"> Saved List </h3>');
 	if (list.length === 0) {
 		$('#savedList').append('<p> You have no saved items! </p>');
 	} else {
@@ -94,6 +96,25 @@ function removeList (obj) {
  	/* remove from database */
  	var objectId = $(obj).attr("id");	
  	backendDeleteItem(objectId);
+}
+
+function modifyInputPage() {
+	/* adjust input page according to different type of brewing */
+	if (brewType === 0) {
+		$('#firstPhase').text("STEEP TIME (MIN):");
+		$('div').remove('#sparging');
+		$('#inputPage').trigger('refresh');
+	} else if (brewType === 1) {
+		$('#firstPhase').text("MASH WAIT TIME (MIN):");
+		$('div').remove('#sparging');
+		$('#inputPage').trigger('refresh');
+	} else {
+		$('#firstPhase').text("MASH WAIT TIME (MIN):");
+		$('div').remove('#sparging');
+		var str = '<div data-role="fieldcontain" id="sparging"><label for="spargingTime"> Sparging Time (min): </label> <input id="spargingTime" name="spargingTime" value="' + def_phase_2 + '" type="text"/></div>';
+		$(str).insertAfter("#firstPhaseForm");
+	}
+	$('#inputPage').trigger('create');
 }
 
 /* Input page events and functions */
@@ -173,7 +194,7 @@ $(document).on('pageinit', '#inputPage', function(){
     var numHops = parseInt(val.options[val.selectedIndex].value); 
 	var handles = numHops;
 
-	loadDefaultVal();
+	//loadDefaultVal();
 	/* Constraint on handles */
 	$('.BuyingSlider').change(function() {
 	    var currentval = parseInt($(this).attr("slider"));
@@ -301,32 +322,40 @@ $(document).on('pagebeforeshow','#timer', function() {
 
 $(document).on('pageinit','#completed', function () {
 	$("#add_to_saved").click(function () {
-		var user = userid.toString();
-		var type = brewType.toString();
-		var name = $("#brewName").val();
-		var firstPhase = timerPhases[0];
-		var secondPhase;
-		var boilTime;
-		if (type === 2) {
-			secondPhase = timerPhases[1];
-			boilTime = timerPhases[2];
+		if (userid === -1) {
+			alert("You did not input an userid. Saving is not enabled.")
 		} else {
-			secondPhase = 0;
-			boilTime = timerPhases[1];
-		}
-		var numOfHops = hopTimes.length;
-		var comment = $("#comment").val().toString();
-		var hops = new Array(5);
-		for (var i = 0; i < 5; i++) {
-			if ((i + 1) <= numOfHops) {
-				hops[i] = hopTimes[i];
+			var user = userid.toString();
+			var type = brewType.toString();
+			var name = $("#brewName").val();
+			var firstPhase = timerPhases[0];
+			var secondPhase;
+			var boilTime;
+			if (type == "2") {
+				secondPhase = timerPhases[1];
+				boilTime = timerPhases[2];
 			} else {
-				hops[i] = 0;
+				secondPhase = 0;
+				boilTime = timerPhases[1];
 			}
+			var numOfHops = hopTimes.length;
+			var comment = $("#comment").val().toString();
+			var hops = new Array(5);
+			for (var i = 0; i < 5; i++) {
+				if ((i + 1) <= numOfHops) {
+					hops[i] = hopTimes[i];
+				} else {
+					hops[i] = 0;
+				}
+			}
+			backendAddItem(user, type, name, firstPhase,secondPhase, boilTime, numOfHops,comment,hops[0],hops[1],hops[2],hops[3],hops[4]);
+			$("#popupForm").popup("close");
 		}
-		backendAddItem(user, type, name, firstPhase,secondPhase, boilTime, numOfHops,comment,hops[0],hops[1],hops[2],hops[3],hops[4]);
 	});
-	resetDefault();
+	$("#back_home").click(function() {
+		loadItem(userid.toString(), generate_saved_list);
+		$.mobile.changePage("#home");	
+	});
 });
 
 
@@ -367,19 +396,21 @@ function GetIndex(sender)
     {
         if (aElements[i] === sender) //this condition is never true
         {
-            clickedIndex = i;
+            clickedIndex = i/2;
             /* change the default values for input forms */
-			def_phase_1 = saved[i].attributes.firstPhase;
-			def_phase_2 = saved[i].attributes.secondPhase;
-			def_boil = saved[i].attributes.boilTime;
-			def_num_hops = saved[i].attributes.numOfHops;
-			def_hop[0] = saved[i].attributes.hop1;
-			def_hop[1] = saved[i].attributes.hop2;
-			def_hop[2] = saved[i].attributes.hop3;
-			def_hop[3] = saved[i].attributes.hop4;
-			def_hop[4] = saved[i].attributes.hop5;        	
-           	$.mobile.changePage('#inputPage');
-           	//resetDefault();
+            brewType = parseInt(saved[clickedIndex].attributes.brewtype);
+            modifyInputPage();
+			def_phase_1 = saved[clickedIndex].attributes.firstPhase;
+			def_phase_2 = saved[clickedIndex].attributes.secondPhase;
+			def_boil = saved[clickedIndex].attributes.boilTime;
+			def_num_hops = saved[clickedIndex].attributes.numOfHops;
+			def_hop[0] = def_boil - saved[clickedIndex].attributes.hop1;
+			def_hop[1] = def_boil  - saved[clickedIndex].attributes.hop2;
+			def_hop[2] = def_boil  - saved[clickedIndex].attributes.hop3;
+			def_hop[3] = def_boil  - saved[clickedIndex].attributes.hop4;
+			def_hop[4] = def_boil  - saved[clickedIndex].attributes.hop5;  
+			loadDefaultVal();      	
+           	$.mobile.changePage("#inputPage");
             return;
         }
     }
@@ -387,7 +418,7 @@ function GetIndex(sender)
 
 function loadDefaultVal() {
 	$("#steepTime").val(def_phase_1);
-	if (brewType === 2) {
+	if (brewType == 2) {
 		$("#spargingTime").val(def_phase_2);
 	}
 	$("#boilTime").val(def_boil);
@@ -403,6 +434,10 @@ function loadDefaultVal() {
 }
 
 function resetDefault() {
+	brewType;
+	timerPhases = [];
+	phaseIndex = 0;
+	hopTimes = [];
 	def_phase_1 = 30;
 	def_phase_2 = 30;
 	def_boil = 60
@@ -410,4 +445,5 @@ function resetDefault() {
 	for (var i=0; i < 5; i++ ){
 		def_hop[i] = 0;
 	}
+	loadDefaultVal();
 }
