@@ -22,7 +22,6 @@ var temp;
 
 
 $(document).on('pageinit', '#home', function(){
-<<<<<<< HEAD
 
 	$('#submit_userid').click(function() {
 		userid = $("#userid_val").val();
@@ -32,9 +31,6 @@ $(document).on('pageinit', '#home', function(){
 		}
 		$("#home").trigger("create");
 	});
-=======
-	
->>>>>>> 9dbe3f2aa05562d171f39cc04d819ac589702288
 
 	$('#extract').click(function(){
 		brewType = 0;
@@ -378,13 +374,9 @@ function timeElapsed(unit, value, total) {
                 $.mobile.changePage('#timer', { allowSamePageTransition: true });
             }
             else {
-<<<<<<< HEAD
-                //alert("You're done brewing! Enjoy!");
+		//alert("You're done brewing! Enjoy!");
                 $.mobile.changePage('#completed');
-=======
-				soundHandle.play();
-                alert("You're done brewing! Enjoy!");
->>>>>>> 9dbe3f2aa05562d171f39cc04d819ac589702288
+		soundHandle.play();
             }
         }
         
