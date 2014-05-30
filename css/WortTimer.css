@@ -190,7 +190,7 @@ a:focus {
 
 
 #brewType, #extract {
-	width: 322px;
+	min-width: 322px;
 	margin: 0 auto;
 }
 
