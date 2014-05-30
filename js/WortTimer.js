@@ -67,6 +67,10 @@ $(document).on('pageinit', '#home', function(){
 	$('#allGrainInfo').click(function(){
 		alert("All grain brewing is the advanced process used by commercial and Craft Brewers to create commercial beers. With a little bit of equipment and time, the homebrewer can create all-grain brews as well. The main difference between all-grain and Extract Brewing or Partial Mash brewing is that in an all-grain brew, the entire volume of unfermented beer (called wort) is created by mashing crushed Malt and running hot water through the grain bed in a process called lautering.");
 	});
+	
+	$('#IDInfo').click(function(){
+		alert("Your User ID can be anything! Each individual ID allows you to save your favorite brewing recipes to your account.  You can continue without entering an ID, but your brewing recipes will not be saved once you exit Wort Timer.");
+	});
 });
 
 function get_saved_list(list) {

@@ -89,7 +89,7 @@
 			</div>
             </br></br>
             <div id="userid">
-                <label for="userid_val" style="font-weight:bold;"> Please input your user id:</label>
+                <a id="IDInfo" data-role="button" data-icon="info" data-iconpos="right">Enter User ID:</a>
                 <input type="text" value="" id="userid_val"/>
                 <input type="button" value="Submit" id="submit_userid" />
             </div>
@@ -165,17 +165,18 @@
         </div>
     </div>
 
-    <div data-role="page" id="completed">
+    <!-- Completed Page -->
+	<div data-role="page" id="completed">
         <div data-role="header" data-theme="b">
             <h1>Wort Timer</h1> 
         </div>
         <div data-role="content">
-            <br>
-            <h1> You are done brewing! </h1>
-            <br>
-            <h1> Enjoy! </h1>
-            <br>
-            <a href="#popupForm" data-icon="heart" data-rel="popup" data-role="button"> Save it! </a>
+            </br> </br> </br> </br> </br> </br>
+            <h4> You are done brewing! </h4>
+            </br>
+			</br>
+			</br>
+			<a href="#popupForm" data-icon="heart" data-rel="popup" data-role="button"> Save it! </a>
             <a href="" data-icon="home" data-role="button" id="back_home"> Return to Home </a>
             <div data-role="popup" id="popupForm" data-position-to="window" class="ui-content">
                 <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>

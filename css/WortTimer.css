@@ -13,7 +13,6 @@ html {
 h1,
 h2,
 h3,
-h4,
 h6 {
     margin: 0 0 35px;
     text-transform: uppercase;
@@ -31,6 +30,16 @@ h6 {
     opacity: 1.0;
     color: #DAA520;
     text-shadow: 1px #DAA520;
+}
+
+h4 {
+	margin: 0 0 35px;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+	opacity: 1.0;
+	text-align: center;
 }
 
 h5 {
@@ -190,8 +199,7 @@ a:focus {
 
 
 #brewType, #extract {
-	min-width: 322px;
-	margin: 0 auto;
+	width: 100%;
 }
 
 #userID {
