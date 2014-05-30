@@ -130,6 +130,9 @@ $(document).on('pageinit', '#inputPage', function(){
 	    $(slider).attr("max", 60).slider("refresh");
 	}
 
+	numOfHopsValChange();
+	boilTimeValChange();
+	
 	/* submit form */	
 	$('#submitTime').click(function () {        
         var val = document.getElementById("numHops");
