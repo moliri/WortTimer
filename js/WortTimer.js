@@ -380,16 +380,16 @@ function timeElapsed(unit, value, total) {
                 $.mobile.changePage('#timer', { allowSamePageTransition: true });
             }
             else {
-		//alert("You're done brewing! Enjoy!");
+				//alert("You're done brewing! Enjoy!");
                 $.mobile.changePage('#completed');
-		//soundHandle.play();
+				//soundHandle.play();
             }
         }
         
         // Deal with the hop times!
         if (phaseIndex === timerPhases.length - 1) {
             if($.inArray(total, hopTimes) !== -1){ 
-				soundHandle.play();
+				//soundHandle.play();
                 alert("Time to add hops!");    
             }
         }
