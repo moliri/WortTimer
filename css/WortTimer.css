@@ -190,7 +190,8 @@ a:focus {
 
 
 #brewType, #extract {
-	width: 200px;
+	width: 222px;
+	vertical-align: middle;
 }
 
 #userID {
