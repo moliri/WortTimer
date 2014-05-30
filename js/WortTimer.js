@@ -313,10 +313,13 @@ $(document).on('pagebeforeshow','#timer', function() {
         "count_past_zero": false
     });
     
-    $('#CountDownTimer').TimeCircles();
-    $('#CountDownTimer2').TimeCircles();
-    $('#CountDownTimer').TimeCircles().pause();
-    $('#CountDownTimer2').TimeCircles().pause();
+    if (phaseIndex === 0) {
+    	$('#CountDownTimer').TimeCircles().pause();
+    	$('#CountDownTimer2').TimeCircles().pause();
+    } else {
+    	$('#CountDownTimer').TimeCircles().start();
+    	$('#CountDownTimer2').TimeCircles().start();
+    }
         
 });
 
