@@ -183,13 +183,14 @@ a:focus {
 	
 }
 
-#home, #extractInput, #partialMashInput, #allGrainInput {
+#home, #extractInput, #partialMashInput, #allGrainInput, #inputPage {
 	background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
 	background-color: #000;
 }
 
-#home {
-	
+
+#brewType, #extract {
+	width: 100%
 }
 
 #userID {

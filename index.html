@@ -36,9 +36,9 @@
     <link rel="stylesheet" href="css/TimeCircles.css" />
     <style type="text/css">
      #CountDownTimer2 {
-        position:absolute;
-        bottom: 30%;
-		left: 20%;
+        position: relative;
+		left: 60%;
+        
         
         width:0em;
         height:18em;
@@ -66,45 +66,31 @@
     	
     	<div data-role="content" class="content">
     		<h1 id="welcome"> Wort Timer </h1>
-    		<div>
-    			<input type="button" id="extract" value="Extract Brewing"/>
-    			
-    			<a href="#popupBasic" data-rel="popup">?</a>
-    			<div data-role="popup" id="popupBasic" data-position-to="window" class="ui-content">
-                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-				<p>Extract brewing is the form of brewing used by most new brewers. Extract brewing involves the use of concentrated Malt Extract in the brewing process. The use of malt extract lets the brewer skip the mashing process, and move directly to the boil and fermentation steps. Extract brewing takes considerably less time and equipment than All Grain brewing. In extract brewing, Malt Extract is added directly to the brew pot and boiled together with Hops to create a sweet liquid called wort for fermenting. You can make very high quality beer using extract brewing, but it does not offer the full range of ingredient and process variations that are possible with All Grain brewing.<p>
+			</br>
+			
+			<div id="brewType" data-role="controlgroup" data-type="horizontal">
+				<input type="button" id="extract" value="Extract Brewing"/>
+				<input type="button" id="extractInfo" value="Info" data-icon="info" data-iconpos="notext"/>
 			</div>
-    		</div>
-    		
-    		</br>
-    		<div>
-    			<input type="button" id="partialMash" value="Partial Mash"/>			
-    			<a href="#popupBasic2" data-rel="popup">?</a>
-    			<div data-role="popup" id="popupBasic2" data-position-to="window" class="ui-content">
-                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>    
-				<p>Partial mash brewing is used by intermediate brewers who want the extra flexibility of being able to include certain malts and other ingredients, but lack the equipment or time needed for all grain brewing. Partial mash offers some of the simplicity of Extract Brewing while offering some of the flexibility of all grain brewing. Partial mash brewing follows the same steps as all grain brewing, but only specialty grains are mashed with a small amount of pale malt to provide enzymes. After mashing, extract malts are added to provide the bulk of the fermentable sugars.<p>
+				
+			</br>
+				
+			<div id="brewType" data-role="controlgroup" data-type="horizontal">
+				<input type="button" id="partialMash" value="Partial Mash Brewing"/>
+				<input type="button" id="partialMashInfo" value="Info" data-icon="info" data-iconpos="notext"/>
 			</div>
-    		</div>
-    		</br>
-    		<div>
-    			<input type="button" id="allGrain" value="All Grain"/>    			
-    			<a href="#popupBasic3" data-rel="popup">?</a>
-    			<div data-role="popup" id="popupBasic3" data-position-to="window" class="ui-content">
-                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-				<p>All grain brewing is the advanced process used by commercial and Craft Brewers to create commercial beers. With a little bit of equipment and time, the homebrewer can create all-grain brews as well. The main difference between all-grain and Extract Brewing or Partial Mash brewing is that in an all-grain brew, the entire volume of unfermented beer (called wort) is created by mashing crushed Malt and running hot water through the grain bed in a process called lautering.<p>
+			
+			</br>
+			
+			<div id="brewType" data-role="controlgroup" data-type="horizontal">
+				<input type="button" id="allGrain" value="All Grain Brewing"/>
+				<input type="button" id="allGrainInfo" value="Info" data-icon="info" data-iconpos="notext"/>
 			</div>
-    		</div>
-            </br></br>
-            <div id="userid">
-                <label for="userid_val" style="font-weight:bold;"> Please input your user id:</label>
-                <input type="text" value="" id="userid_val"/>
-                <input type="button" value="Submit" id="submit_userid" />
-            </div>
-            <ul data-role="listview" data-split-icon="delete" data-split-theme="a" id="savedList">
-            </ul>
-    	</div>
-    	
-    </div>
+			
+			</br>
+			
+		</div>
+	</div>
     
     <!-- Extract Input Page -->
     <div data-role="page" id="inputPage" data-cache="false">
@@ -162,10 +148,7 @@
             </div> 
             
             </br>
-			</br>
-			</br>
-			</br>
-			</br>
+			
             <button class="btn btn-success startTimer">Start Timer</button>
             <button class="btn btn-danger stopTimer">Stop Timer</button>
         </div>
