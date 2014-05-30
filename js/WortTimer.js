@@ -132,7 +132,8 @@ $(document).on('pageinit', '#inputPage', function(){
 
 	numOfHopsValChange();
 	boilTimeValChange();
-	
+	loadDefaultVal();
+
 	/* submit form */	
 	$('#submitTime').click(function () {        
         var val = document.getElementById("numHops");
@@ -273,7 +274,7 @@ $(document).on('pagebeforeshow','#inputPage',function (){
 
 /* Timer page events and functions */
 /* starting script for timer page */
-$(document).on('pageinit','#timer', function() {
+$(document).on('pagecreate','#timer', function() {
 
     $("#CountDownTimer").TimeCircles({
 		"time" : { "Days": { "show": false }, "Hours": { "show": false },"Seconds":{"show":false}},
@@ -297,14 +298,22 @@ $(document).on('pageinit','#timer', function() {
 	});       
 
 	$("#CountDownTimer").TimeCircles().addListener(timeElapsed, "visible");
-	$("#CountDownTimer2").TimeCircles().addListener(timeElapsed, "visible");
+	$("#CountDownTimer2").TimeCircles().addListener(timeElapsed, "visible"); 
+
+	if (phaseIndex === 0) {
+    	$('#CountDownTimer').TimeCircles().pause();
+    	$('#CountDownTimer2').TimeCircles().pause();
+    } else {
+    	$('#CountDownTimer').TimeCircles().start();
+    	$('#CountDownTimer2').TimeCircles().start();
+    }  
 });
 
 
-$(document).on('pagebeforeshow','#timer', function() {
-	
-    $('#CountDownTimer').attr('data-timer', timerPhases[phaseIndex]);
-    $('#CountDownTimer2').attr('data-timer', timerPhases[phaseIndex]);        
+$(document).on('pagebeforeshow','#timer', function() {    
+
+	$('#CountDownTimer').attr('data-timer', timerPhases[phaseIndex]);
+    $('#CountDownTimer2').attr('data-timer', timerPhases[phaseIndex]); 
     
     $("#CountDownTimer").TimeCircles({
         "time" : { "Days": { "show": false }, "Hours": { "show": false },"Seconds":{"show":false}},
