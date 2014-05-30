@@ -1,13 +1,13 @@
-Parse.initialize("p3WFau7rwXnsUVQKNOhSbuztub7D8fe4q2unlAm9", "lWi3UcUdbfQRF9P9H1oF1idIW6LhUq7dFXck5RM1");
+Parse.initialize("DVCdj4jdPP9nfqBqJrYE8Cy59AEHTBkaazTzpN1b", "a0T6G6ZHHSJafRmzkZISKSwC8oThNJORrd70Jv4e");
 
-var debuggingBackend = false;
+var debuggingBackend = true;
 
-function loadPantry(userID, successCallback) {
-    var table = Parse.Object.extend('Pantry');
+function loadItem(userID, successCallback) {
+    var table = Parse.Object.extend('Timer');
     var query = new Parse.Query(table);
     var list = [];
     
-    query.equalTo('userID',userID);
+    query.equalTo('userId',userID);
     query.find({
         success : function (results) {
             for(var i = 0; i < results.length; i++){
@@ -16,7 +16,7 @@ function loadPantry(userID, successCallback) {
             }
             
             if(debuggingBackend){
-                console.log('pantry:');
+                console.log('Saved Items:');
                 console.log(list);
             }
             
@@ -31,16 +31,39 @@ function loadPantry(userID, successCallback) {
     return query;
 }
 
-function backendAddRecipe(userID,recipeID,recipeName, picURL) {
+function backendAddItem(userId, brewtype, name, firstPhase,secondPhase, boilTime, numOfHops,comment,hop1,hop2,hop3,hop4,hop5) {
                 
-    var table = Parse.Object.extend("Recipe");
+    var table = Parse.Object.extend("Timer");
     var RecipeTable = new table();
 
-    RecipeTable.set("userID", userID);
-    RecipeTable.set("recipeID", recipeID);
-    RecipeTable.set("recipeName",recipeName);
-    RecipeTable.set("picURL", picURL); 
+    console.log(userId);
+    console.log(brewtype);
+    console.log(name);
+    console.log(firstPhase);
+    console.log(secondPhase);
+    console.log(boilTime);
+    console.log(numOfHops);
+    console.log(comment);
+    console.log(hop1);
+    console.log(hop2);
+    console.log(hop3);
+    console.log(hop4);
+    console.log(hop5);
 
+    RecipeTable.set("userId", userId);
+    RecipeTable.set("brewtype",brewtype)
+    RecipeTable.set("name",name);
+    RecipeTable.set("firstPhase",firstPhase);
+    RecipeTable.set("secondPhase",secondPhase);
+    RecipeTable.set("boilTime",boilTime);
+    RecipeTable.set("numOfHops", numOfHops);
+    RecipeTable.set("comment",comment);    
+    RecipeTable.set("hop1",hop1);
+    RecipeTable.set("hop2",hop2);
+    RecipeTable.set("hop3",hop3);
+    RecipeTable.set("hop4",hop4);  
+    RecipeTable.set("hop5",hop5);    
+    
 
     RecipeTable.save(null, {
       success: function(RecipeTable) {
@@ -54,11 +77,11 @@ function backendAddRecipe(userID,recipeID,recipeName, picURL) {
     });
 }
 
-function backendGetRecipe(userID, callback){
-    var list = [];
-	var table = Parse.Object.extend("Recipe");
+function backendGetItem(userID, callback){
+  var list = [];
+	var table = Parse.Object.extend("Timer");
 	var query = new Parse.Query(table);
-	query.equalTo("userID", userID);
+	query.equalTo("userId", userID);
 	query.find({
         success: function(results) {
             // Do something with the returned Parse.Object values
@@ -83,39 +106,16 @@ function backendGetRecipe(userID, callback){
   return query;
 }
 
-function backendAddPantry(userID,Item) {
-                
-    var table = Parse.Object.extend("Pantry");
-    var PantryTable = new table();
+function backendDeleteItem(objectId){
 
-    PantryTable.set("userID", userID);
-    PantryTable.set("Item", Item);
-   
-    PantryTable.save(null, {
-      success: function(PantryTable) {
-        // Execute any logic that should take place after the object is saved.
-        if(debuggingBackend) {
-            alert('New object created with objectId: ' + PantryTable.id);
-        }
-      },
-      error: function(PantryTable, error) {
-        
-        alert('Failed to create new object, with error code: ' + error.description);
-      }
-    });
-}
-
-function backendDeletePantry(userID,Item){
-
-  var table = Parse.Object.extend("Pantry");
+  var table = Parse.Object.extend("Timer");
   var query = new Parse.Query(table);
-  query.equalTo("userID", userID);
-  query.equalTo("Item",Item);
+  query.equalTo("objectId", objectId);
   query.find({
         success: function(results) {
             // Do something with the returned Parse.Object values
             results[0].destroy({
-              success: function(results){alert("delete success")},
+              success: function(results){alert("Item delete success")},
               error: function(results){}
             });
           },
