@@ -35,7 +35,7 @@ $(document).on('pageinit', '#home', function(){
 	$('#extract').click(function(){
 		brewType = 0;
 		modifyInputPage();
-		resetDefault();
+		resetDefault();	
 		$.mobile.changePage('#inputPage');
 	});
 	
@@ -189,10 +189,10 @@ $(document).on('pageinit', '#inputPage', function(){
             
             hopTimes.push(boilTime - sliderVal);
         }
-        
-		$('#CountDownTimer').attr('data-timer', steepTime);
-        $('#CountDownTimer2').attr('data-timer', steepTime);
 
+		$('#CountDownTimer').attr('data-timer', steepTime);
+  		$('#CountDownTimer2').attr('data-timer', steepTime);
+  		timerInit();
 		$.mobile.changePage('#timer');
 	});
 
@@ -276,11 +276,10 @@ $(document).on('pagebeforeshow','#inputPage',function (){
     phaseIndex = 0;
 });
 
-/* Timer page events and functions */
-/* starting script for timer page */
-$(document).on('pagecreate','#timer', function() {
-
-    $("#CountDownTimer").TimeCircles({
+function timerInit() {
+	$('#CountDownTimer').TimeCircles().destroy();
+	$('#CountDownTimer2').TimeCircles().destroy();
+	$("#CountDownTimer").TimeCircles({
 		"time" : { "Days": { "show": false }, "Hours": { "show": false },"Seconds":{"show":false}},
 		"count_past_zero": false
     });
@@ -289,6 +288,14 @@ $(document).on('pagecreate','#timer', function() {
         "time" : { "Days": { "show": false }, "Hours": { "show": false },"Minutes":{"show":false}},
         "count_past_zero": false
     });
+	$("#CountDownTimer").TimeCircles().addListener(timeElapsed, "visible");
+	$("#CountDownTimer2").TimeCircles().addListener(timeElapsed, "visible"); 
+}
+
+
+/* Timer page events and functions */
+/* starting script for timer page */
+$(document).on('pagecreate','#timer', function() {
 
     // Start and stop are methods applied on the public TimeCircles instance
 	$(".startTimer").click(function() {
@@ -301,9 +308,6 @@ $(document).on('pagecreate','#timer', function() {
 		$("#CountDownTimer2").TimeCircles().pause();
 	});       
 
-	$("#CountDownTimer").TimeCircles().addListener(timeElapsed, "visible");
-	$("#CountDownTimer2").TimeCircles().addListener(timeElapsed, "visible"); 
-
 	if (phaseIndex === 0) {
     	$('#CountDownTimer').TimeCircles().pause();
     	$('#CountDownTimer2').TimeCircles().pause();
@@ -315,19 +319,16 @@ $(document).on('pagecreate','#timer', function() {
 
 
 $(document).on('pagebeforeshow','#timer', function() {    
-
-	$('#CountDownTimer').attr('data-timer', timerPhases[phaseIndex]);
-    $('#CountDownTimer2').attr('data-timer', timerPhases[phaseIndex]); 
     
-    $("#CountDownTimer").TimeCircles({
-        "time" : { "Days": { "show": false }, "Hours": { "show": false },"Seconds":{"show":false}},
-        "count_past_zero": false
-    });
+    // $("#CountDownTimer").TimeCircles({
+    //     "time" : { "Days": { "show": false }, "Hours": { "show": false },"Seconds":{"show":false}},
+    //     "count_past_zero": false
+    // });
 
-    $("#CountDownTimer2").TimeCircles({
-        "time" : { "Days": { "show": false }, "Hours": { "show": false },"Minutes":{"show":false}},
-        "count_past_zero": false
-    });
+    // $("#CountDownTimer2").TimeCircles({
+    //     "time" : { "Days": { "show": false }, "Hours": { "show": false },"Minutes":{"show":false}},
+    //     "count_past_zero": false
+    // });
     
     if (phaseIndex === 0) {
     	$('#CountDownTimer').TimeCircles().pause();
@@ -336,7 +337,6 @@ $(document).on('pagebeforeshow','#timer', function() {
     	$('#CountDownTimer').TimeCircles().start();
     	$('#CountDownTimer2').TimeCircles().start();
     }
-        
 });
 
 $(document).on('pageinit','#completed', function () {
@@ -386,14 +386,13 @@ function timeElapsed(unit, value, total) {
         if (total === 0) {
             if (phaseIndex < timerPhases.length-1) {
 				//soundHandle.play();
-                alert("Time is up!\nHit OK to move to the next brewing phase.");
-            
+                alert("Time is up!\nHit OK to move to the next brewing phase.");     
                 phaseIndex++;
-            
+                $('#CountDownTimer').attr('data-timer', timerPhases[phaseIndex]);
+    			$('#CountDownTimer2').attr('data-timer', timerPhases[phaseIndex]); 
                 $.mobile.changePage('#timer', { allowSamePageTransition: true });
             }
             else {
-				//alert("You're done brewing! Enjoy!");
                 $.mobile.changePage('#completed');
 				//soundHandle.play();
             }
