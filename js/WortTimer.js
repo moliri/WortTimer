@@ -2,7 +2,7 @@
 
 // Flag for dev mode vs user testing mode
 // Dev mode speeds the timers up by a factor of 60
-var inDevelopmentMode = false;
+var inDevelopmentMode = true;
 
 var brewType;
 var timerPhases = [];
