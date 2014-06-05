@@ -338,7 +338,27 @@ function modifyInputPage() {
 
 function initPhaseName() {
 	phaseName = [];
-	if (brewType === 0) {
+	
+	switch(brewType) {
+		case 0:
+			phaseName.push("STEEPING");
+			phaseName.push("BOILING");
+			break;
+		case 1:
+			phaseName.push("MASH WAITING");
+			phaseName.push("BOILING");
+			break;
+		case 2:
+			phaseName.push("MASH WAITING");
+			phaseName.push("SPARGING");
+			phaseName.push("BOILING");
+			break;
+		default:
+			console.error("Unknown brewType occurred in initPhaseName()");
+			return -1;
+	}
+	
+	/*if (brewType === 0) {
 		phaseName.push("STEEPING");
 		phaseName.push("BOILING");
 	} else if (brewType === 1) {
@@ -351,7 +371,7 @@ function initPhaseName() {
 	} else {
 		console.error("Unknown brewType occurred in initPhaseName()");
 		return -1;
-	}
+	}*/
 }
 
 function boilTimeValChange() {
