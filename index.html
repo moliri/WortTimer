@@ -63,31 +63,35 @@
     	<div data-role="header" data-theme="b">
     		<h1> Wort Timer </h1>
     	</div>
+		
+		</br>
     	
     	<div data-role="content" class="content">
     		<h1 id="welcome"> Wort Timer </h1>
 			
-			</br>
 			
 			<div id="brewType" data-role="controlgroup" data-type="horizontal">
 				<input type="button" id="extract" value="Extract Brewing"/>
 				<input type="button" id="extractInfo" value="Info" data-icon="info" data-iconpos="notext"/>
 			</div>
 				
-			</br>
+			
 				
 			<div id="brewType" data-role="controlgroup" data-type="horizontal">
 				<input type="button" id="partialMash" value="Partial Mash Brewing"/>
 				<input type="button" id="partialMashInfo" value="Info" data-icon="info" data-iconpos="notext"/>
 			</div>
 			
-			</br>
+			
 			
 			<div id="brewType" data-role="controlgroup" data-type="horizontal">
 				<input type="button" id="allGrain" value="All Grain Brewing"/>
 				<input type="button" id="allGrainInfo" value="Info" data-icon="info" data-iconpos="notext"/>
 			</div>
-            </br></br>
+            </br>
+			</br>
+			</br>
+			
             <div id="userid">
                 <a id="IDInfo" data-role="button" data-icon="info" data-iconpos="right">Enter User ID:</a>
                 <input type="text" value="" id="userid_val"/>
@@ -99,8 +103,8 @@
 	</div>
 
     
-    <!-- Extract Input Page -->
-    <div data-role="page" id="inputPage" data-cache="false">
+    <!-- Input Page -->
+    <div data-role="page" id="inputPage" data-cache="false" >
         
 		<div data-role="header" data-theme="b">
             <h1> Wort Timer </h1> 
@@ -108,37 +112,37 @@
 		
         <div data-role="content" class="content">
             <h1 id="welcome">Brew Times</h1>
-            <div data-role="fieldcontain" id="firstPhaseForm">
+            <div data-role="fieldcontain" id="firstPhaseForm" style="display: inline">
                 <label for="steepTime" id="firstPhase">Steep Time (min): </label>      
                 <input id="steepTime" name="steepTime" value="30" type="text"/>
             </div>
-            <div data-role="fieldcontain">
+            <div data-role="fieldcontain" >
                 <label for="boilTime">Total Boil Time (min): </label>      
                 <input id="boilTime" name="boilTime" value="60" type="text"/>
             </div>
-            <div data-role="fieldcontain">
-		<label for="select-choice-1" class="select">Number of Hops:</label>
-   		<select name="select-choice-1" id="numHops">
-   		<option value=0>Select # of Hops</option>
-      		<option value=1>1</option>
-      		<option value=2>2</option>
-      		<option value=3>3</option>
-      		<option value=4>4</option>
-      		<option value=5>5</option>
-   		</select>
-	    </div>
-        <div class="priceRangeInfo">
-            <label for="buying_slider_min" id="hops_at">Hops @ </label>
-            <input type="range" name="buying_slider_1" id="buying_slider_1" slider="1" class="BuyingSlider" value="100" min="0" max="100"/>
-            <input type="range" name="buying_slider_2" id="buying_slider_2" slider="2" class="BuyingSlider" value="100" min="0" max="100"/>
-            <input type="range" name="buying_slider_3" id="buying_slider_3" slider="3" class="BuyingSlider" value="100" min="0" max="100"/>
-            <input type="range" name="buying_slider_4" id="buying_slider_4" slider="4" class="BuyingSlider" value="100" min="0" max="100"/>
-            <input type="range" name="buying_slider_5" id="buying_slider_5" slider="5" class="BuyingSlider" value="100" min="0" max="100"/>
-        </div>
-        <div data-role="fieldcontain">     
-            <input type="button" id="submitTime" value="Submit" />
-        </div> 
-        </div>
+            <div data-role="fieldcontain" style="display: inline">
+				<label for="select-choice-1" class="select">Number of Hops:</label>
+					<select name="select-choice-1" id="numHops">
+						<option value=0>Select # of Hops</option>
+						<option value=1>1</option>
+						<option value=2>2</option>
+						<option value=3>3</option>
+						<option value=4>4</option>
+						<option value=5>5</option>
+					</select>
+			</div>
+			<div class="priceRangeInfo" >
+				<label for="buying_slider_min" id="hops_at">Hops @ </label>
+				<input type="range" name="buying_slider_1" id="buying_slider_1" slider="1" class="BuyingSlider" value="100" min="0" max="100"/>
+				<input type="range" name="buying_slider_2" id="buying_slider_2" slider="2" class="BuyingSlider" value="100" min="0" max="100"/>
+				<input type="range" name="buying_slider_3" id="buying_slider_3" slider="3" class="BuyingSlider" value="100" min="0" max="100"/>
+				<input type="range" name="buying_slider_4" id="buying_slider_4" slider="4" class="BuyingSlider" value="100" min="0" max="100"/>
+				<input type="range" name="buying_slider_5" id="buying_slider_5" slider="5" class="BuyingSlider" value="100" min="0" max="100"/>
+			</div>
+			<div data-role="fieldcontain">     
+				<input type="button" id="submitTime" value="Submit" />
+			</div> 
+		</div>
 		
     </div>
 
