@@ -334,6 +334,7 @@ function modifyInputPage() {
 		$(str).insertAfter("#firstPhaseForm");
 	}
 	$('#inputPage').trigger('create');
+	initPhaseName();
 }
 
 function initPhaseName() {
