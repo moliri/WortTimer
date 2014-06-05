@@ -1,7 +1,7 @@
 /****************************************************************/
 /* File Name: WortTimer.js					*/
 /* Project:   WortTimer						*/
-/* Author:    Daniel Zuo, Haodong Wang, Zachary Straight	*/
+/* Author:    Daniel Zuo, Haodong Wang, Zachariah Straight	*/
 /*            Leesha Maliakal, Dylan Hirshkowitz, Peiying Zhou	*/									 
 /* Date:      6/5/2014						*/									 
 /* Class:     Northwestern University 				*/
@@ -339,15 +339,15 @@ function modifyInputPage() {
 function initPhaseName() {
 	phaseName = [];
 	if (brewType === 0) {
-		phaseName.push("STEEP");
-		phaseName.push("BOIL");
+		phaseName.push("STEEPING");
+		phaseName.push("BOILING");
 	} else if (brewType === 1) {
-		phaseName.push("MASH WAIT");
-		phaseName.push("BOIL");
+		phaseName.push("MASH WAITING");
+		phaseName.push("BOILING");
 	} else if (brewType === 2) {
-		phaseName.push("MASH WAIT");
+		phaseName.push("MASH WAITING");
 		phaseName.push("SPARGING");
-		phaseName.push("BOIL");
+		phaseName.push("BOILING");
 	} else {
 		console.error("Unknown brewType occurred in initPhaseName()");
 		return -1;
