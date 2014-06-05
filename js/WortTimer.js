@@ -1,12 +1,12 @@
-/*****************************************************************/
-/* File Name: WortTimer.js							 			 */
-/* Project:   WortTimer								 			 */
-/* Author:    Daniel Zuo, Haodong Wang, Zachary Straight	     */
-/* 			  Leesha Maliakal, Dylan Hirshkowitz, Peiying Zhou	 */									 
-/* Date: 	  6/5/2014											 */									 
-/* Class: 	  Northwestern University 							 */
-/*			  EECS 394: Software Development					 */								 
-/*****************************************************************/
+/****************************************************************/
+/* File Name: WortTimer.js					*/
+/* Project:   WortTimer						*/
+/* Author:    Daniel Zuo, Haodong Wang, Zachary Straight	*/
+/*            Leesha Maliakal, Dylan Hirshkowitz, Peiying Zhou	*/									 
+/* Date:      6/5/2014						*/									 
+/* Class:     Northwestern University 				*/
+/*            EECS 394: Software Development			*/								 
+/****************************************************************/
 
 "use strict";
 
